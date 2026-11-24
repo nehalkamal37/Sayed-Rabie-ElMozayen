@@ -10,9 +10,9 @@ import styles from "./service-showcase.module.css";
 
 /** Photo and approved crop for each service, in the copy's order. */
 const views = [
-  { photo: photos.cut, mobile: "50% 18%", desktop: "50% 20%" },
-  { photo: photos.beard, mobile: "50% 30%", desktop: "50% 30%" },
-  { photo: photos.chair, mobile: "50% 55%", desktop: "50% 50%" },
+  { photo: photos.razorBeard, mobile: "50% 50%", desktop: "41% 50%" },
+  { photo: photos.hairColour, mobile: "50% 45%", desktop: "50% 50%" },
+  { photo: photos.faceMask, mobile: "50% 40%", desktop: "60% 50%" },
 ] as const;
 
 interface Props {

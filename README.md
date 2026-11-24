@@ -71,7 +71,10 @@ Structured data (Organization, OfferCatalog, HairSalon) is output only when
 - **Typeface**: Dubai comes first in the stack and renders only where installed.
   IBM Plex Sans Arabic (OFL, self-hosted) is the approved fallback. It is pinned to
   5.0.8 because later releases drop the lam-meem ligature seen in the approved screens.
-- **Photos**: all temporary, from one image of unknown origin. See `src/data/photos.ts`.
+- **Photos**: all temporary. Every homepage photo is stock: the hero and haircut-and-beard
+  photos are CC BY 2.0 and need a visible credit if published; hair treatment, skin care,
+  groom and story are under the Pexels License. Services and Madinaty still use crops of one
+  image of unknown origin. Sources, credits and edits are in `src/data/photos.ts`.
 - **Map**: a drawn placeholder on the branch page.
 - **Privacy policy**: shown as text marked "soon" until the page exists.
 

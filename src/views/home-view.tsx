@@ -11,7 +11,7 @@ import { OrganizationJsonLd } from "@/components/json-ld";
 import { PageFrame } from "@/components/page-frame";
 import { ForwardArrow, ResponsiveText } from "@/components/responsive-text";
 import { getDictionary } from "@/content";
-import { photos } from "@/data/photos";
+import { photos, type Photo } from "@/data/photos";
 import { reviews } from "@/data/site";
 import { localePath, type Locale } from "@/i18n/config";
 import styles from "./home-view.module.css";
@@ -108,10 +108,10 @@ export function HomeView({ locale }: { locale: Locale }) {
           <div className={`container ${styles.groom}`}>
             <figure className={styles.groomPhoto}>
               <Image
-                src={photos.groom.src}
-                width={photos.groom.width}
-                height={photos.groom.height}
-                alt={photos.groom.alt[locale]}
+                src={photos.groomStyling.src}
+                width={photos.groomStyling.width}
+                height={photos.groomStyling.height}
+                alt={photos.groomStyling.alt[locale]}
                 sizes="(min-width: 60rem) 520px, 110vw"
               />
             </figure>
@@ -168,11 +168,11 @@ export function HomeView({ locale }: { locale: Locale }) {
           <div className={`container ${styles.story}`}>
             <Image
               className={styles.storyPhoto}
-              src={photos.story.src}
-              width={photos.story.width}
-              height={photos.story.height}
-              alt={photos.story.alt[locale]}
-              sizes="(min-width: 60rem) 400px, 100vw"
+              src={photos.leatherChairs.src}
+              width={photos.leatherChairs.width}
+              height={photos.leatherChairs.height}
+              alt={photos.leatherChairs.alt[locale]}
+              sizes="(min-width: 60rem) 690px, 100vw"
             />
             <div className={styles.storyText}>
               <p className={styles.storyEyebrow}>{story.eyebrow}</p>
@@ -219,12 +219,12 @@ export function HomeView({ locale }: { locale: Locale }) {
 /** Portrait crop on phones, the wide photo on desktop. */
 function HeroPicture({ locale }: { locale: Locale }) {
   const alt = photos.heroWide.alt[locale];
-  const source = ({ src, width, height }: (typeof photos)["heroWide"]) => ({ src, width, height });
+  const source = ({ src, width, height }: Photo) => ({ src, width, height });
   const { props: wide } = getImageProps({ ...source(photos.heroWide), alt, sizes: "100vw" });
   const { props: portrait } = getImageProps({
     ...source(photos.heroPortrait),
     alt,
-    sizes: "(min-width: 33rem) 100vw, 525px",
+    sizes: "100vw",
   });
   return (
     <picture className={styles.heroPhoto}>
