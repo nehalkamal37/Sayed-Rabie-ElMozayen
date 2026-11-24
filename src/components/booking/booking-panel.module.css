@@ -1,0 +1,252 @@
+.dialog {
+  inline-size: 100%;
+  max-inline-size: none;
+  block-size: 100dvh;
+  max-block-size: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-brown);
+}
+
+.dialog[open] {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.dialog::backdrop {
+  background: rgb(20 10 5 / 0.62);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  inline-size: 100%;
+  max-block-size: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.75rem 1rem calc(1.25rem + env(safe-area-inset-bottom));
+  border-radius: 1.375rem 1.375rem 0 0;
+  background: var(--color-off-white);
+}
+
+.grab {
+  flex: none;
+  align-self: center;
+  inline-size: 2.75rem;
+  block-size: 5px;
+  border-radius: 3px;
+  background: var(--color-line-input);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.header h2 {
+  font-size: 1.375rem;
+}
+
+.header h2:focus {
+  outline: none;
+}
+
+.close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  border: 1px solid var(--color-line-input);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-brown);
+}
+
+.banner {
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: var(--color-notice-ground);
+  color: var(--color-notice);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.locked {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 10px 12px;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.lockedText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.lockedLabel {
+  color: var(--color-brown-soft);
+  font-size: 0.8125rem;
+}
+
+.lockedValue {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.textButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2.75rem;
+  padding-inline: 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--color-brown);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field label {
+  color: var(--color-brown-soft);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  inline-size: 100%;
+  min-block-size: 3rem;
+  padding: 11px;
+  border: 1px solid var(--color-line-input);
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--color-brown);
+  font-weight: 600;
+}
+
+.field input::placeholder {
+  color: #75695f;
+  opacity: 1;
+}
+
+.field [aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+:global(html[dir="rtl"]) .field input[type="tel"] {
+  text-align: right;
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.submit {
+  inline-size: 100%;
+  min-block-size: 3.375rem;
+  border: 0;
+  border-radius: 12px;
+  background: var(--color-brown);
+  color: var(--color-off-white);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.submit:hover {
+  background: var(--color-brown-deep);
+}
+
+.note {
+  color: var(--color-brown-soft);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.ready {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding-block: 6px;
+  text-align: center;
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  inline-size: 3.75rem;
+  block-size: 3.75rem;
+  border-radius: 50%;
+  background: var(--color-beige);
+}
+
+.readyHeading {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.readyBody {
+  color: var(--color-text-soft);
+  line-height: 1.7;
+}
+
+.message {
+  inline-size: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-line-card);
+  border-radius: 12px;
+  background: #fff;
+  line-height: 1.6;
+  text-align: start;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 60rem) {
+  .dialog[open] {
+    align-items: stretch;
+  }
+
+  .panel {
+    inline-size: 28.75rem;
+    border-radius: 0;
+  }
+
+  .grab {
+    display: none;
+  }
+}

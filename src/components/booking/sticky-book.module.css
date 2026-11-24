@@ -1,0 +1,35 @@
+.bar {
+  position: fixed;
+  inset-inline: 12px;
+  inset-block-end: calc(14px + env(safe-area-inset-bottom));
+  z-index: 5;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-block-size: 60px;
+  border-radius: 14px;
+  background: var(--color-gold);
+  color: var(--color-on-gold);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow-sticky);
+}
+
+@media (min-width: 40rem) and (max-width: 59.99rem) {
+  .bar {
+    inset-inline: 0;
+    margin-inline: auto;
+    inline-size: 30rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .bar {
+    display: none;
+  }
+}

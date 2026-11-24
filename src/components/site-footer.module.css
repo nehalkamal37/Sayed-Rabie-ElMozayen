@@ -1,0 +1,143 @@
+.footer {
+  background: var(--color-brown-deep);
+  color: var(--color-beige);
+  font-size: 0.9375rem;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+.logo {
+  inline-size: 150px;
+  block-size: auto;
+}
+
+.footer .phone {
+  color: #fff;
+}
+
+.small {
+  color: var(--color-tan);
+  font-size: 0.8125rem;
+}
+
+.privacy {
+  color: var(--color-tan);
+}
+
+.full {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-block: 36px 40px;
+}
+
+.columns {
+  display: contents;
+}
+
+.pages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 16px;
+}
+
+.pages > * {
+  padding-block: 10px;
+}
+
+.compact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-block: 28px 40px;
+}
+
+@media (max-width: 59.99rem) {
+  :global(body:has([data-sticky-book])) .footer > div {
+    padding-block-end: calc(120px + env(safe-area-inset-bottom));
+  }
+
+  .phone {
+    display: inline-block;
+    padding-block: 10px;
+    margin-block: -10px;
+  }
+}
+
+@media (min-width: 60rem) {
+  .full {
+    gap: 40px;
+    padding-block: 64px 28px;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  .full .logo {
+    inline-size: 180px;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .brand p {
+    line-height: 1.7;
+  }
+
+  .pages,
+  .areas,
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .pages > * {
+    padding: 0;
+  }
+
+  .title {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block-start: 20px;
+    border-block-start: 1px solid var(--color-line-dark);
+  }
+
+  .legal,
+  .legal .small {
+    font-size: 0.875rem;
+  }
+
+  .compact {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding-block: 36px;
+  }
+
+  .compact .logo {
+    inline-size: auto;
+    block-size: 44px;
+  }
+}

@@ -1,0 +1,48 @@
+:root {
+  /* Brand Guide palette */
+  --color-brown: #45291d;
+  --color-off-white: #f3ebe1;
+  --color-beige: #e7d0af;
+  --color-gold: #b98949;
+  --color-taupe: #a99279;
+
+  /* Approved handoff tokens */
+  --color-brown-deep: #2b180f; /* footer, photo frames */
+  --color-brown-dark: #3a2218; /* bands and tiles on brown */
+  --color-brown-card: #4f3124; /* branch cards on brown */
+  --color-on-gold: #2a180f;
+  --color-text-soft: #5a3d2c; /* body text on light */
+  --color-brown-soft: #6b4a36; /* labels and captions on light */
+  --color-story-text: #4a3022;
+  --color-tan: #c9b494; /* small text on dark, chip borders on light */
+  --color-draft: #e0a96d; /* unconfirmed facts on dark */
+  --color-notice: #7a3d0c;
+  --color-notice-ground: #f6dcc0;
+  --color-line: #d9c7ad;
+  --color-line-card: #e3d3ba;
+  --color-line-input: #cdb795;
+  --color-line-band: #e0cfb4;
+  --color-line-row: #efe4d3;
+  --color-row-hover: #fbf7f0;
+  --color-line-dark: rgb(231 208 175 / 0.18);
+
+  /* The handoff's #8a6a3c and #a07c4c fall under 4.5:1 where they carry text,
+     so these are the nearest shades that pass. */
+  --color-muted-gold: #85653a; /* 4.5:1 on off-white */
+  --color-empty-value: #8a6a3c; /* 5:1 on white */
+  --color-error: #8f1d14;
+
+  /* Dubai is the brand typeface. It renders where installed; self-host it once
+     a licensed webfont is supplied. IBM Plex Sans Arabic is the approved fallback. */
+  --font-brand: Dubai, "IBM Plex Sans Arabic", Tahoma, sans-serif;
+
+  --gutter: 1rem;
+  --radius: 0.75rem;
+  --shadow-sticky: 0 14px 34px rgb(20 10 5 / 0.5);
+}
+
+@media (min-width: 60rem) {
+  :root {
+    --gutter: 2rem;
+  }
+}

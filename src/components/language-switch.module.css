@@ -1,0 +1,19 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  padding-inline: 10px;
+  color: var(--color-beige);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #fff;
+}
+
+@media (min-width: 60rem) {
+  .link {
+    padding-inline: 4px;
+  }
+}
