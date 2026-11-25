@@ -7,38 +7,6 @@ const STAGGER_MS = 180;
 /** Clear of the phone booking bar. */
 const VIEW_MARGIN = "0px 0px -72px 0px";
 
-/**
- * Marks its content `data-reveal="in"` the first time it is scrolled to. Content
- * is only held back ("wait") once this has run, while it is still below the
- * screen and motion is welcome, so it shows normally in every other case.
- */
-export function Reveal({ className, children }: { className?: string; children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (element.getBoundingClientRect().top < innerHeight) return;
-    element.dataset.reveal = "wait";
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        element.dataset.reveal = "in";
-        observer.disconnect();
-      },
-      { rootMargin: "0px 0px -22% 0px" },
-    );
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className={className}>
-      {children}
-    </div>
-  );
-}
-
 /** What a step waits for: most of it on screen, part of it, or only the step before. */
 export type Step = "most" | "part" | "after-previous";
 
@@ -46,7 +14,7 @@ export type Step = "most" | "part" | "after-previous";
  * Plays the `data-step` elements inside it one after another, once, in page order
  * unless `data-order` says otherwise. Each starts a
  * beat after the one before and never before it is on screen, so none plays out of
- * sight. Like Reveal, it holds nothing back without JavaScript or with reduced motion.
+ * sight. It holds nothing back without JavaScript or with reduced motion.
  */
 function useSequence(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {

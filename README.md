@@ -45,7 +45,7 @@ policy text yet: it needs approved copy before launch.
 ## Booking
 
 Every Book control is a link to `/book` with `?branch=` and `?service=`, and opens
-the booking sheet (phones) or side panel (desktop) in place. Choices carried in
+the booking modal in place. Choices carried in
 appear as changeable rows. `/book` remains the three-step page and the fallback
 without JavaScript. Both share validation, draft storage and the WhatsApp message
 in `src/lib/booking.ts`.

@@ -124,7 +124,7 @@ export function DetailsStep({
 
       <PrivacyNote locale={locale} copy={copy} className={styles.privacy} />
       <div className={styles.actions}>
-        <button type="submit" className="button button--dark">
+        <button type="submit" className="button">
           {copy.review}
         </button>
         <button type="button" className="button button--outline" onClick={onBack}>

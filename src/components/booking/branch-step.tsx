@@ -52,7 +52,7 @@ export function BranchStep({ locale, copy, selected, onSelect, onContinue }: Pro
         ) : null}
       </div>
       <div className={styles.actions}>
-        <button type="submit" className="button button--dark">
+        <button type="submit" className="button">
           {copy.continue}
         </button>
       </div>

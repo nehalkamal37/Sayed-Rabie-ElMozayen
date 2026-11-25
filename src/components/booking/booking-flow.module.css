@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
-  margin-block-end: 2rem;
+  margin-block-end: 1.5rem;
 }
 
 .progress li {
@@ -21,8 +21,8 @@
 }
 
 .progress li[data-state="current"] {
-  border-color: var(--color-brown);
-  color: var(--color-brown);
+  border-color: var(--color-brown-deep);
+  color: var(--color-brown-deep);
   font-weight: 700;
 }
 
@@ -36,6 +36,7 @@
 }
 
 .stepHeading {
+  color: var(--color-brown-deep);
   margin-block-end: 1.25rem;
   font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
   scroll-margin-block-start: 4rem;
@@ -48,14 +49,14 @@
 
 .note {
   margin-block-end: 1.5rem;
-  padding: 0.875rem 1rem;
-  background: var(--color-beige);
-  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  border-inline-start: 2px solid var(--color-gold);
+  background: #fff;
 }
 
 .fields {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.125rem;
 }
 
 [role="alert"] > .error:only-child {
@@ -69,6 +70,7 @@
 }
 
 .field label {
+  color: var(--color-brown-deep);
   font-weight: 700;
 }
 
@@ -77,14 +79,15 @@
   min-inline-size: 0;
   min-block-size: 3.25rem;
   padding: 0.5rem 1rem;
-  border: 2px solid var(--color-brown-soft);
-  border-radius: var(--radius);
+  border: 1px solid var(--color-brown-soft);
+  border-radius: 0;
   background: #fff;
-  color: var(--color-brown);
+  color: var(--color-brown-deep);
 }
 
 .field input[aria-invalid="true"] {
   border-color: var(--color-error);
+  box-shadow: inset 0 0 0 1px var(--color-error);
 }
 
 /* The number itself reads left to right but lines up with the form. */
@@ -100,7 +103,7 @@
 .error {
   margin-block: 0.25rem;
   color: var(--color-error);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .privacy {
@@ -113,6 +116,17 @@
   flex-wrap: wrap;
   gap: 0.875rem;
   margin-block-start: 1.75rem;
+}
+
+.actions :global(.button) {
+  border-radius: 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.actions :global(.button:not(.button--outline, :disabled)):active {
+  border-color: #a67a3d;
+  background: #a67a3d;
 }
 
 .summary {
@@ -165,18 +179,16 @@
 
 .badge {
   padding: 0.125rem 0.75rem;
-  background: var(--color-brown);
+  background: var(--color-brown-deep);
   color: var(--color-off-white);
-  border-radius: var(--radius);
   font-size: 0.875rem;
 }
 
 .message {
   margin-block-end: 1.5rem;
   padding: 1.25rem;
+  border-inline-start: 2px solid var(--color-gold);
   background: #fff;
-  border: 1px solid var(--color-taupe);
-  border-radius: var(--radius);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }

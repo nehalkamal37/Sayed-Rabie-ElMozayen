@@ -53,11 +53,32 @@ html {
   text-size-adjust: 100%;
 }
 
-/* The page behind an open booking panel stays put. */
-html:has(dialog[open]) {
+html {
+  background: var(--color-off-white);
+}
+
+/* Behind the booking modal the page stays put until the modal has faded out. */
+html[data-modal] {
   overflow: hidden;
-  scrollbar-gutter: stable;
-  background: #140a05;
+}
+
+/* With a mouse the scrollbar's space is always kept, so neither the page nor its vw
+   units change when the modal hides it. Touch scrollbars take no space to keep. */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  /* The empty strip darkens along with the backdrop. */
+  html:has(dialog[open]) {
+    background: #6d645d;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    transition: background-color 0.2s ease-out;
+  }
 }
 
 /* Keeps focused controls clear of the fixed booking button. */
@@ -240,7 +261,7 @@ main:focus {
   }
 
   button:not(:disabled):active,
-  a[class]:active {
+  a[class]:not([aria-haspopup="dialog"]):active {
     scale: 0.985;
   }
 }

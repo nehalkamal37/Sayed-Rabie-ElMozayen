@@ -54,7 +54,7 @@ export function ServiceStep({ locale, copy, selected, onSelect, onBack, onContin
         ) : null}
       </div>
       <div className={styles.actions}>
-        <button type="submit" className="button button--dark">
+        <button type="submit" className="button">
           {copy.continue}
         </button>
         <button type="button" className="button button--outline" onClick={onBack}>

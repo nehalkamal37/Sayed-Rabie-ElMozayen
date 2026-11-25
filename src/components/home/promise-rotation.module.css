@@ -1,22 +1,26 @@
-/* Static form: a ruled list, and three columns on desktop. */
+/* Static form: the three promises as a ruled list beside the gold rule. */
 .slot {
-  inline-size: 100%;
-  margin-block-start: 34px;
+  overflow: clip;
+  border-inline-start: 2px solid var(--color-gold);
+  background: #fff;
 }
 
 .phrases {
-  border-block-start: 1px solid var(--color-line);
+  padding-inline: 20px;
 }
 
 .phrases li {
   display: flex;
   align-items: center;
-  justify-content: center;
   min-block-size: 60px;
-  border-block-end: 2px solid var(--color-gold);
   color: var(--color-brown-deep);
-  font-size: 1.125rem;
+  font-size: 1.1875rem;
   font-weight: 700;
+  line-height: 1.45;
+}
+
+.phrases li + li {
+  border-block-start: 1px solid var(--color-line);
 }
 
 .toggle {
@@ -24,53 +28,40 @@
 }
 
 @media (min-width: 60rem) {
-  .slot {
-    max-inline-size: 73.5rem;
-    margin-block-start: 64px;
-  }
-
   .phrases {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    padding: 20px 40px;
   }
 
   .phrases li {
-    min-block-size: 112px;
-    font-size: 1.375rem;
-  }
-
-  .phrases li + li {
-    border-inline-start: 1px solid var(--color-line);
+    min-block-size: 88px;
+    font-size: 1.625rem;
   }
 }
 
 /* Rotating form. The phrases share one cell, so the slot is always as tall as the
-   longest of them and the page never moves. */
+   longest of them and the page never moves. Sliding text is clipped to that cell. */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   .slot {
     display: grid;
-    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    grid-template-columns: minmax(0, 1fr) 44px;
+    gap: 12px;
     align-items: center;
-    border-block: 1px solid var(--color-line);
-    border-block-end: 2px solid var(--color-gold);
+    padding-inline: 20px 12px;
   }
 
   .phrases {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-column: 2;
+    padding: 0;
     overflow: clip;
-    border: 0;
   }
 
   .phrases li,
   .phrases li + li {
     grid-area: 1 / 1;
-    min-block-size: 96px;
+    min-block-size: 112px;
     border: 0;
-    font-size: clamp(1.125rem, 5.4vw, 1.375rem);
-    line-height: 1.45;
-    text-align: center;
+    font-size: clamp(1.25rem, 5.9vw, 1.5rem);
     text-wrap: balance;
     animation: turn 8.1s infinite backwards;
   }
@@ -85,7 +76,6 @@
 
   .toggle {
     display: grid;
-    grid-column: 3;
     place-items: center;
     inline-size: 44px;
     block-size: 44px;
@@ -115,13 +105,17 @@
 
   @media (min-width: 60rem) {
     .slot {
-      max-inline-size: 52rem;
+      padding-inline: 44px 24px;
+    }
+
+    .phrases {
+      padding: 0;
     }
 
     .phrases li,
     .phrases li + li {
-      min-block-size: 128px;
-      font-size: 2rem;
+      min-block-size: 260px;
+      font-size: 2.375rem;
     }
   }
 }

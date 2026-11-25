@@ -7,6 +7,7 @@ import { photos, type Photo } from "@/data/photos";
 import { getService, services, type ServiceGroupId, type ServiceId } from "@/data/services";
 import type { Locale } from "@/i18n/config";
 import { BookingLink } from "../booking/booking-provider";
+import { useHomeSelection } from "./home-selection";
 import styles from "./service-menu.module.css";
 
 interface Props {
@@ -32,7 +33,13 @@ const views: readonly View[] = [
 /** A visual menu: one choice changes the photo, the description and the booking action. */
 export function ServiceMenu({ locale, copy, bookLabel }: Props) {
   const [active, setActive] = useState(0);
+  const { choose } = useHomeSelection();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  function select(index: number) {
+    setActive(index);
+    choose(views[index].book);
+  }
 
   function move(event: KeyboardEvent, index: number) {
     const count = views.length;
@@ -47,7 +54,7 @@ export function ServiceMenu({ locale, copy, bookLabel }: Props) {
     }[event.key];
     if (target === undefined) return;
     event.preventDefault();
-    setActive(target);
+    select(target);
     tabs.current[target]?.focus();
   }
 
@@ -73,7 +80,7 @@ export function ServiceMenu({ locale, copy, bookLabel }: Props) {
             aria-controls={`service-panel-${index}`}
             tabIndex={index === active ? 0 : -1}
             className={styles.tab}
-            onClick={() => setActive(index)}
+            onClick={() => select(index)}
             onKeyDown={(event) => move(event, index)}
           >
             <span className={styles.thumb}>
@@ -127,7 +134,7 @@ export function ServiceMenu({ locale, copy, bookLabel }: Props) {
                   <li key={id}>{name[locale]}</li>
                 ))}
             </ul>
-            <BookingLink className={styles.book} preset={{ service: book }}>
+            <BookingLink className={styles.book} preset={{ service: book }} data-own-booking>
               <span>{bookLabel}</span>
               <span className={styles.bookService}>{getService(book).name[locale]}</span>
             </BookingLink>

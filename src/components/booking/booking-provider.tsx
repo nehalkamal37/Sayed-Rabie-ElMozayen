@@ -40,7 +40,7 @@ interface ProviderProps {
   readonly children: ReactNode;
 }
 
-/** Holds the one booking sheet (phones) or side panel (desktop) for the page. */
+/** Holds the one booking modal for the page. */
 export function BookingProvider({ locale, copy, children }: ProviderProps) {
   // Each opening is its own panel, so one can open while another is still closing.
   const [panel, setPanel] = useState<{ id: number; preset: PanelPreset } | null>(null);
