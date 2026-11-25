@@ -12,6 +12,7 @@ import {
   type DetailField,
 } from "@/lib/booking";
 import type { BookingCopy } from "./booking-flow";
+import { PrivacyNote } from "./privacy-note";
 import styles from "./booking-flow.module.css";
 
 interface Props {
@@ -121,7 +122,7 @@ export function DetailsStep({
         })}
       </div>
 
-      <p className={styles.privacy}>{copy.privacyNote}</p>
+      <PrivacyNote locale={locale} copy={copy} className={styles.privacy} />
       <div className={styles.actions}>
         <button type="submit" className="button button--dark">
           {copy.review}

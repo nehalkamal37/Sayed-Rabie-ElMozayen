@@ -1,0 +1,163 @@
+.selector {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--color-line-row);
+}
+
+.selector button {
+  min-block-size: 48px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--color-brown);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.selector button:hover {
+  background: var(--color-line-card);
+}
+
+.selector button[aria-pressed="true"] {
+  background: var(--color-brown);
+  color: var(--color-off-white);
+}
+
+.region {
+  padding-block-start: 28px;
+}
+
+.region h2 {
+  margin-block-end: 12px;
+  font-size: 1.375rem;
+}
+
+.region ul {
+  display: grid;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  block-size: 100%;
+  padding: 14px;
+  border: 1px solid var(--color-line-card);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.head h3 {
+  font-size: 1.1875rem;
+}
+
+.area,
+.facts {
+  color: var(--color-text-soft);
+}
+
+.pending {
+  color: var(--color-notice);
+  font-size: 0.9375rem;
+}
+
+.facts {
+  display: grid;
+  gap: 8px;
+  padding-block: 6px;
+}
+
+.facts dt {
+  color: var(--color-brown-soft);
+  font-size: 0.875rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-block-start: auto;
+  padding-block-start: 6px;
+}
+
+.detail {
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-block-size: 48px;
+  font-weight: 700;
+  text-underline-offset: 5px;
+  white-space: pre-wrap;
+}
+
+.book,
+.directions {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 48px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.book {
+  background: var(--color-brown);
+  color: var(--color-off-white);
+}
+
+.book:hover {
+  background: var(--color-brown-deep);
+}
+
+.directions {
+  border: 1.5px solid var(--color-brown);
+}
+
+@media (min-width: 60rem) {
+  .selector {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-inline-size: 44rem;
+  }
+
+  .region {
+    padding-block-start: 44px;
+  }
+
+  .region h2 {
+    margin-block-end: 16px;
+    font-size: 1.875rem;
+  }
+
+  .region ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    gap: 6px;
+    padding: 20px 22px;
+    border-radius: 16px;
+  }
+
+  .head h3 {
+    font-size: 1.375rem;
+  }
+}

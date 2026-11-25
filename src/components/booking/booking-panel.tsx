@@ -30,6 +30,7 @@ import { updateDraft, useBookingDraft } from "@/lib/booking-draft";
 import { fill } from "@/lib/text";
 import { Icon } from "../icons";
 import type { PanelPreset } from "./booking-provider";
+import { PrivacyNote } from "./privacy-note";
 import styles from "./booking-panel.module.css";
 
 const DAYS_OFFERED = 14;
@@ -320,6 +321,7 @@ export function BookingPanel({ locale, copy, preset, onClose }: Props) {
               {verified ? copy.send : sheet.prepare}
             </button>
             <p className={styles.note}>{sheet.note}</p>
+            <PrivacyNote locale={locale} copy={copy} className={styles.note} />
           </form>
         )}
       </div>

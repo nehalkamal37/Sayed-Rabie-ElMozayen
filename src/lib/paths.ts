@@ -1,6 +1,10 @@
 import type { BranchId } from "@/data/branches";
 import type { ServiceId } from "@/data/services";
 
+export const directoryPath = "/branches";
+export const groomPath = "/groom-package";
+export const privacyPath = "/privacy";
+
 /** Choices carried into a booking when it opens from a branch or service. */
 export interface BookingPreset {
   readonly branch?: BranchId;

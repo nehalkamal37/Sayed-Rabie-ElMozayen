@@ -1,5 +1,6 @@
 import type { Dictionary } from "@/content";
 import { localePath, type Locale } from "@/i18n/config";
+import { directoryPath, groomPath } from "@/lib/paths";
 
 export interface NavLink {
   /** Language-neutral path. */
@@ -13,8 +14,8 @@ export function navLinks(locale: Locale, nav: Dictionary["common"]["nav"]): read
   return [
     { path: "/", label: nav.home },
     { path: "/services", label: nav.services },
-    { path: "/#groom", label: nav.groom },
-    { path: "/#branches", label: nav.branches },
+    { path: groomPath, label: nav.groom },
+    { path: directoryPath, label: nav.branches },
     { path: "/#story", label: nav.about },
   ].map((link) => ({ ...link, href: localePath(locale, link.path) }));
 }

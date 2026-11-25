@@ -1,0 +1,15 @@
+.body {
+  padding-block: 18px 40px;
+}
+
+@media (min-width: 40rem) and (max-width: 59.99rem) {
+  .body {
+    max-inline-size: 46rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .body {
+    padding-block: 40px 80px;
+  }
+}

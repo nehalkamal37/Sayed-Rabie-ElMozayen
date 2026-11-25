@@ -546,6 +546,18 @@
     font-size: 1.0625rem;
   }
 
+  .branchesHead .branchesSide {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .allBranches {
+    font-weight: 700;
+    text-underline-offset: 4px;
+  }
+
   .draft {
     padding: 6px 12px;
     font-size: 0.8125rem;

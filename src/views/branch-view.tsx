@@ -7,6 +7,7 @@ import { CallAction, PhoneLink, WhatsAppAction } from "@/components/contact";
 import { Icon } from "@/components/icons";
 import { BranchJsonLd } from "@/components/json-ld";
 import { PageFrame } from "@/components/page-frame";
+import { QuestionList } from "@/components/question-list";
 import { ForwardArrow } from "@/components/responsive-text";
 import { getDictionary } from "@/content";
 import {
@@ -19,6 +20,7 @@ import {
 import { getService, topServiceIds } from "@/data/services";
 import type { Verifiable } from "@/data/verification";
 import { localePath, type Localized, type Locale } from "@/i18n/config";
+import { directoryPath } from "@/lib/paths";
 import { fill } from "@/lib/text";
 import styles from "./branch-view.module.css";
 
@@ -64,13 +66,15 @@ export function BranchView({ locale, branch, detail }: Props) {
           </figure>
           <div className={styles.heroText}>
             <nav className={styles.crumbs} aria-label={common.breadcrumb}>
-              <Link href={localePath(locale, "/#branches")}>{copy.branches}</Link>{" "}
+              <Link href={localePath(locale, directoryPath)}>{copy.branches}</Link>{" "}
               <span aria-hidden="true">{locale === "ar" ? "‹" : "›"}</span>{" "}
               <span aria-current="page">{name}</span>
             </nav>
             <h1>{detail.heading[locale]}</h1>
             <p className={styles.intro}>{detail.intro[locale]}</p>
-            {branch.hours.status === "verified" ? null : (
+            {branch.draft ? (
+              <p className={styles.status}>{copy.draftStatus}</p>
+            ) : branch.hours.status === "verified" ? null : (
               <p className={styles.status}>{copy.hoursPendingStatus}</p>
             )}
             <div className={`${styles.tiles} only-mobile`}>
@@ -181,7 +185,11 @@ export function BranchView({ locale, branch, detail }: Props) {
             <ForwardArrow locale={locale} />
           </Link>
         </div>
-        <p className={`${styles.servicesNote} only-mobile`}>{copy.servicesNote}</p>
+        {branch.draft ? (
+          <p className={styles.servicesNote}>{copy.servicesDraftNote}</p>
+        ) : (
+          <p className={`${styles.servicesNote} only-mobile`}>{copy.servicesNote}</p>
+        )}
         <ul className={styles.serviceList}>
           {topServiceIds.map((id) => {
             const service = getService(id);
@@ -234,37 +242,29 @@ export function BranchView({ locale, branch, detail }: Props) {
         <div className={`container ${styles.questions}`}>
           <section className={styles.faq} aria-labelledby="faq-heading">
             <h2 id="faq-heading">{fill(copy.questions, { branch: name })}</h2>
-            {detail.questions.map(({ question, answer }) => (
-              <details key={question.en}>
-                <summary>
-                  <h3>{question[locale]}</h3>
-                  <Icon name="chevronDown" size={18} className={styles.chevron} />
-                </summary>
-                {answer.status === "verified" ? (
-                  <p>{answer.value[locale]}</p>
-                ) : (
-                  <p className={styles.answerPending}>{copy.answerPending}</p>
-                )}
-              </details>
-            ))}
+            <QuestionList
+              onBeige
+              pendingLabel={copy.answerPending}
+              items={detail.questions.map(({ question, answer, tip }) => ({
+                question: question[locale],
+                answer: answer.status === "verified" ? answer.value[locale] : undefined,
+                tip: tip?.[locale],
+              }))}
+            />
           </section>
           <section className={styles.nearby} aria-labelledby="nearby-heading">
-            <h2 id="nearby-heading">{copy.nearby}</h2>
+            <h2 id="nearby-heading">{nearby.length > 0 ? copy.nearby : copy.branches}</h2>
             <ul>
-              {nearby.map((other) => {
-                const label = bookingBranchName(other)[locale];
-                return (
+              {nearby.map((other) => (
                   <li key={other.id}>
-                    {other.detail ? (
-                      <Link href={localePath(locale, branchPath(other.id))}>{label}</Link>
-                    ) : (
-                      <BookingLink preset={{ branch: other.id }}>
-                        {label} <span className="visually-hidden">{copy.bookHere}</span>
-                      </BookingLink>
-                    )}
+                    <Link href={localePath(locale, branchPath(other.id))}>
+                      {bookingBranchName(other)[locale]}
+                    </Link>
                   </li>
-                );
-              })}
+              ))}
+              <li>
+                <Link href={localePath(locale, directoryPath)}>{copy.allBranches}</Link>
+              </li>
             </ul>
           </section>
         </div>

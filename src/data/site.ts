@@ -33,6 +33,16 @@ export const bookingPhone: Verifiable<PhoneNumber> = verified({
  */
 export const bookingWhatsApp: Verifiable<string> = pending;
 
+/** Profiles listed in the content plan, section 17. Confirm the handles before launch. */
+export const socialProfiles: readonly { readonly name: Localized; readonly url: string }[] = [
+  { name: { ar: "فيسبوك", en: "Facebook" }, url: "https://www.facebook.com/SayedElMezien" },
+  {
+    name: { ar: "انستجرام", en: "Instagram" },
+    url: "https://www.instagram.com/sayedrabie_elmozayen",
+  },
+  { name: { ar: "Threads", en: "Threads" }, url: "https://www.threads.com/@sayedrabie_elmozayen" },
+];
+
 export interface Review {
   readonly text: Localized;
   readonly author: string;

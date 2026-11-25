@@ -1,5 +1,5 @@
 import type { Dictionary } from "@/content";
-import { bookingBranchName, getBranch, type BranchId } from "@/data/branches";
+import { bookingBranchName, getBranch, weekDays, type BranchId } from "@/data/branches";
 import { getService, type ServiceId } from "@/data/services";
 import { localeMeta, type Locale } from "@/i18n/config";
 
@@ -127,9 +127,13 @@ export function formatDay(
 ): string {
   const value = new Date(`${date}T00:00:00Z`);
   if (Number.isNaN(value.getTime())) return "";
-  return new Intl.DateTimeFormat(localeMeta[locale].format, { ...options, timeZone: "UTC" }).format(
-    value,
-  );
+  const { weekday, ...rest } = options;
+  const format = (parts: Intl.DateTimeFormatOptions) =>
+    new Intl.DateTimeFormat(localeMeta[locale].format, { ...parts, timeZone: "UTC" }).format(value);
+  const egyptianDay = weekDays.find(({ day }) => day === value.getUTCDay());
+  // Arabic uses the same Egyptian day names as the branch hours.
+  if (locale === "ar" && weekday && egyptianDay) return `${egyptianDay.name.ar}، ${format(rest)}`;
+  return format(options);
 }
 
 export function formatTime(locale: Locale, time: string): string {

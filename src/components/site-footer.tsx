@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Fragment } from "react";
 import { getDictionary } from "@/content";
-import { branchPath, getBranch, type BranchId } from "@/data/branches";
-import { brandName } from "@/data/site";
+import { branchPath, type BranchId } from "@/data/branches";
+import { brandName, socialProfiles } from "@/data/site";
 import { localePath, type Locale } from "@/i18n/config";
+import { directoryPath, groomPath, privacyPath } from "@/lib/paths";
 import { PhoneLink, WhatsAppAction } from "./contact";
 import { ForwardArrow } from "./responsive-text";
 import styles from "./site-footer.module.css";
@@ -38,11 +40,10 @@ export function SiteFooter({ locale, variant }: { locale: Locale; variant: Foote
       {copy.bookingLine} <PhoneLink locale={locale} className={styles.phone} />
     </span>
   );
-  // No privacy page exists yet, so the approved label is shown without a link.
   const privacy = (
-    <span className={styles.privacy}>
-      {copy.privacy} ({common.soon})
-    </span>
+    <Link className={styles.privacy} href={to(privacyPath)}>
+      {copy.privacy}
+    </Link>
   );
 
   if (variant !== "full") {
@@ -80,22 +81,24 @@ export function SiteFooter({ locale, variant }: { locale: Locale; variant: Foote
               <span className="only-mobile">{common.nav.services}</span>
               <span className="only-desktop">{copy.services}</span>
             </Link>
-            <Link href={to("/#groom")}>{common.nav.groom}</Link>
-            <Link className="only-mobile" href={to("/#branches")}>
+            <Link href={to(groomPath)}>{common.nav.groom}</Link>
+            <Link className="only-mobile" href={to(directoryPath)}>
               {copy.branches}
             </Link>
             <Link href={to("/services#kids")}>{copy.kids}</Link>
             <Link href={to("/services#before")}>{copy.faq}</Link>
-            <span className="only-mobile">{privacy}</span>
+            <Link className={`${styles.privacy} only-mobile`} href={to(privacyPath)}>
+              {copy.privacy}
+            </Link>
           </nav>
           <nav className={`${styles.areas} only-desktop`} aria-label={copy.branches}>
             <span className={styles.title}>{copy.branches}</span>
             {footerBranches.map((id) => (
-              <Link key={id} href={to(getBranch(id).detail ? branchPath(id) : "/#branches")}>
+              <Link key={id} href={to(branchPath(id))}>
                 {copy.areas[id]}
               </Link>
             ))}
-            <Link href={to("/#branches")}>
+            <Link href={to(directoryPath)}>
               {copy.allBranches}
               <ForwardArrow locale={locale} />
             </Link>
@@ -106,7 +109,16 @@ export function SiteFooter({ locale, variant }: { locale: Locale; variant: Foote
             <span className="only-desktop">
               <WhatsAppAction pendingLabel={common.unavailable}>{common.whatsapp}</WhatsAppAction>
             </span>
-            <span className="only-desktop">{copy.social}</span>
+            <span className="only-desktop">
+              {socialProfiles.map(({ name, url }, index) => (
+                <Fragment key={url}>
+                  {index > 0 ? " · " : null}
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    {name[locale]}
+                  </a>
+                </Fragment>
+              ))}
+            </span>
           </div>
         </div>
         <div className={styles.legal}>

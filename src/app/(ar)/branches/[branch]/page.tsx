@@ -10,20 +10,22 @@ type Props = { params: Promise<{ branch: string }> };
 async function loadBranch(params: Props["params"]) {
   const id = parseBranchId((await params).branch);
   const branch = id ? getBranch(id) : null;
-  return branch?.detail ? { branch, detail: branch.detail } : null;
+  return branch ? { branch, detail: branch.detail } : null;
 }
 
 export function generateStaticParams() {
-  return branches.filter((branch) => branch.detail).map((branch) => ({ branch: branch.id }));
+  return branches.map((branch) => ({ branch: branch.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const loaded = await loadBranch(params);
   if (!loaded) return { title: getDictionary("ar").notFound.metaTitle };
-  return pageMetadata("ar", branchPath(loaded.branch.id), {
-    title: loaded.detail.metaTitle.ar,
-    description: loaded.detail.metaDescription.ar,
-  });
+  return pageMetadata(
+    "ar",
+    branchPath(loaded.branch.id),
+    { title: loaded.detail.metaTitle.ar, description: loaded.detail.metaDescription.ar },
+    { draft: loaded.branch.draft },
+  );
 }
 
 export default async function Page({ params }: Props) {

@@ -14,6 +14,7 @@ import { getDictionary } from "@/content";
 import { photos, type Photo } from "@/data/photos";
 import { reviews } from "@/data/site";
 import { localePath, type Locale } from "@/i18n/config";
+import { directoryPath, groomPath } from "@/lib/paths";
 import styles from "./home-view.module.css";
 
 export function HomeView({ locale }: { locale: Locale }) {
@@ -71,9 +72,18 @@ export function HomeView({ locale }: { locale: Locale }) {
                 <h2 id="branches-heading">{home.branches.heading}</h2>
                 <p className="only-desktop">{home.branches.lede}</p>
               </div>
-              <span className={styles.draft}>
-                <ResponsiveText long={home.branches.draft} short={home.branches.draftShort} />
-              </span>
+              <div className={styles.branchesSide}>
+                <span className={styles.draft}>
+                  <ResponsiveText long={home.branches.draft} short={home.branches.draftShort} />
+                </span>
+                <Link
+                  className={`${styles.allBranches} only-desktop`}
+                  href={localePath(locale, directoryPath)}
+                >
+                  {home.branches.all}
+                  <ForwardArrow locale={locale} />
+                </Link>
+              </div>
             </div>
             <BranchFinder locale={locale} copy={home.branches} />
           </div>
@@ -131,7 +141,7 @@ export function HomeView({ locale }: { locale: Locale }) {
                 </BookingLink>
                 <Link
                   className={`${styles.secondary} only-desktop`}
-                  href={localePath(locale, "/services#groom")}
+                  href={localePath(locale, groomPath)}
                 >
                   {groom.details}
                 </Link>

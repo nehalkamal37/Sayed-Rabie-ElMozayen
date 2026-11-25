@@ -17,11 +17,18 @@ npm run build
 | --- | --- | --- |
 | Home | `/` | `/en/` |
 | Services & prices | `/services` | `/en/services` |
-| Madinaty branch | `/branches/madinaty` | `/en/branches/madinaty` |
+| Branch directory | `/branches` | `/en/branches` |
+| Branch details | `/branches/<branch id>` | `/en/branches/<branch id>` |
+| Groom package | `/groom-package` | `/en/groom-package` |
+| Privacy policy | `/privacy` | `/en/privacy` |
 | Booking request | `/book` | `/en/book` |
 
-The visual specification for the first three is `design-handoff/`. English is an
-LTR adaptation; the handoff has no English screens.
+The visual specification is `design-handoff/`, which covers home, services and the
+Madinaty branch page in Arabic. The other pages and all English pages follow from it.
+
+Branches marked `draft` in `branches.ts`, and the privacy page, are labelled and
+`noindex`. Remove the flag once the client approves them. The privacy page holds no
+policy text yet: it needs approved copy before launch.
 
 ## Where things live
 
@@ -61,7 +68,8 @@ to remove it everywhere.
 
 Draft badges on the services page and the homepage branch finder are copy
 (`services.draft`, `home.branches.draft`); remove them with the last pending fact.
-Adding `detail` content to a branch record creates its page in both languages.
+Every branch record has `detail` content, which makes its page in both languages.
+`socialProfiles` in `site.ts` come from the content plan; confirm the handles.
 
 Structured data (Organization, OfferCatalog, HairSalon) is output only when
 `NEXT_PUBLIC_SITE_URL` is set, and HairSalon also needs a verified address.
@@ -76,7 +84,7 @@ Structured data (Organization, OfferCatalog, HairSalon) is output only when
   groom and story are under the Pexels License. Services and Madinaty still use crops of one
   image of unknown origin. Sources, credits and edits are in `src/data/photos.ts`.
 - **Map**: a drawn placeholder on the branch page.
-- **Privacy policy**: shown as text marked "soon" until the page exists.
+- **Branch photos**: stock previews, labelled as such. None shows a real branch.
 
 ## Privacy
 

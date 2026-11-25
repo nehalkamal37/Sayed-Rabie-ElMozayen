@@ -7,11 +7,14 @@ export function pageMetadata(
   locale: Locale,
   path: string,
   copy: { title: string; description: string },
+  /** Draft pages stay out of search results. */
+  { draft = false }: { draft?: boolean } = {},
 ): Metadata {
   const url = (target: Locale) => `${siteUrl}${localePath(target, path)}`;
   return {
     title: copy.title,
     description: copy.description,
+    ...(draft ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: url(locale),
       languages: {

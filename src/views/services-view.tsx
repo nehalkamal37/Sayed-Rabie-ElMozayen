@@ -16,6 +16,7 @@ import { photos } from "@/data/photos";
 import { serviceGroups, servicesInGroup, type Service, type ServiceGroup } from "@/data/services";
 import type { Verifiable } from "@/data/verification";
 import { localePath, type Locale } from "@/i18n/config";
+import { groomPath } from "@/lib/paths";
 import styles from "./services-view.module.css";
 
 export function ServicesView({ locale }: { locale: Locale }) {
@@ -89,10 +90,10 @@ export function ServicesView({ locale }: { locale: Locale }) {
               <div>
                 <span className={styles.groomTitle}>{common.nav.groom}</span>
                 <span className={styles.groomBody}>{copy.groomCard.body}</span>
-                <a href="#groom">
+                <Link href={localePath(locale, groomPath)}>
                   {copy.groomCard.cta}
                   <ForwardArrow locale={locale} />
-                </a>
+                </Link>
               </div>
             </div>
           </aside>

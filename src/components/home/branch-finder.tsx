@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import type { Dictionary } from "@/content";
 import {
   branches,
@@ -13,7 +13,6 @@ import {
   type Branch,
 } from "@/data/branches";
 import { localePath, type Locale } from "@/i18n/config";
-import { BookingLink } from "../booking/booking-provider";
 import { Icon } from "../icons";
 import styles from "./branch-finder.module.css";
 
@@ -43,7 +42,7 @@ export function BranchFinder({ locale, copy }: Props) {
       <ul className={styles.list}>
         {branches.map((branch) => (
           <li key={branch.id} data-shown={branch.region === region}>
-            <BranchEntry locale={locale} branch={branch} copy={copy} />
+            <BranchEntry locale={locale} branch={branch} />
           </li>
         ))}
       </ul>
@@ -51,10 +50,9 @@ export function BranchFinder({ locale, copy }: Props) {
   );
 }
 
-/** Opens the branch page where one exists, otherwise a booking at that branch. */
-function BranchEntry({ locale, branch, copy }: Props & { branch: Branch }) {
-  const content: ReactNode = (
-    <>
+function BranchEntry({ locale, branch }: { locale: Locale; branch: Branch }) {
+  return (
+    <Link className={styles.entry} href={localePath(locale, branchPath(branch.id))}>
       <span className={styles.text}>
         <span className={styles.region}>{regionNames[branch.region][locale]}</span>
         <span className={styles.name}>{branch.name[locale]}</span>
@@ -63,18 +61,9 @@ function BranchEntry({ locale, branch, copy }: Props & { branch: Branch }) {
         ) : branch.pendingNote ? (
           <span className={`${styles.note} ${styles.pending}`}>{branch.pendingNote[locale]}</span>
         ) : null}
-        <span className="visually-hidden">{branch.detail ? copy.open : copy.bookHere}</span>
+        <span className="visually-hidden">{branch.detail.linkLabel[locale]}</span>
       </span>
       <Icon name="chevronForward" className={styles.chevron} />
-    </>
-  );
-  return branch.detail ? (
-    <Link className={styles.entry} href={localePath(locale, branchPath(branch.id))}>
-      {content}
     </Link>
-  ) : (
-    <BookingLink className={styles.entry} preset={{ branch: branch.id }}>
-      {content}
-    </BookingLink>
   );
 }

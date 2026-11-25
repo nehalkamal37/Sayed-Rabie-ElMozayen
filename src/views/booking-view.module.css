@@ -14,3 +14,91 @@
   line-height: 1.3;
   text-wrap: balance;
 }
+
+.contact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-block-end: 2rem;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-block-size: 72px;
+  padding: 14px;
+  border: 1px solid var(--color-line-card);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--color-text-soft);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.card:first-child {
+  grid-column: 1 / -1;
+}
+
+.card[href]:hover {
+  border-color: var(--color-brown);
+}
+
+.card[aria-disabled] {
+  border-color: var(--color-taupe);
+}
+
+.card svg {
+  color: var(--color-empty-value);
+}
+
+.cardTitle {
+  color: var(--color-brown);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.form {
+  scroll-margin-block-start: 1.5rem;
+}
+
+.follow {
+  margin-block-start: 3.5rem;
+  padding-block-start: 1.5rem;
+  border-block-start: 1px solid var(--color-line-band);
+}
+
+.follow h2 {
+  margin-block-end: 0.5rem;
+  font-size: 1.375rem;
+}
+
+.follow ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.follow a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 46px;
+  padding: 0 16px;
+  border: 1px solid var(--color-tan);
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (min-width: 60rem) {
+  .contact {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .card:first-child {
+    grid-column: auto;
+  }
+}
