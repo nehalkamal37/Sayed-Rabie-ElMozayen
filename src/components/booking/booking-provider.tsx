@@ -42,16 +42,20 @@ interface ProviderProps {
 
 /** Holds the one booking sheet (phones) or side panel (desktop) for the page. */
 export function BookingProvider({ locale, copy, children }: ProviderProps) {
-  const [preset, setPreset] = useState<PanelPreset | null>(null);
+  // Each opening is its own panel, so one can open while another is still closing.
+  const [panel, setPanel] = useState<{ id: number; preset: PanelPreset } | null>(null);
+  const open = (preset: PanelPreset) =>
+    setPanel((current) => ({ id: (current?.id ?? 0) + 1, preset }));
   return (
-    <BookingContext value={{ locale, open: setPreset }}>
+    <BookingContext value={{ locale, open }}>
       {children}
-      {preset ? (
+      {panel ? (
         <BookingPanel
+          key={panel.id}
           locale={locale}
           copy={copy}
-          preset={preset}
-          onClose={() => setPreset(null)}
+          preset={panel.preset}
+          onClose={() => setPanel((current) => (current?.id === panel.id ? null : current))}
         />
       ) : null}
     </BookingContext>

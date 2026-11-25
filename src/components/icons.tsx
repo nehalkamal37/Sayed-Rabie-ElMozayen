@@ -26,6 +26,8 @@ const paths = {
   phone: (
     <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
   ),
+  pause: <path d="M9 6v12M15 6v12" />,
+  play: <path d="M8 5.5v13l10-6.5z" />,
   chat: <path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z" />,
 } as const;
 

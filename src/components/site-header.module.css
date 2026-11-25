@@ -76,7 +76,7 @@
     color: #fff;
   }
 
-  .nav:not([data-home]) a[aria-current] {
+  .nav a[aria-current] {
     padding-block-end: 4px;
     border-block-end: 2px solid var(--color-gold);
   }
@@ -96,6 +96,6 @@
   }
 
   .book:hover {
-    background: var(--color-beige);
+    background: var(--color-off-white);
   }
 }

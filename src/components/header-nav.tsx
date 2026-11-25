@@ -17,16 +17,15 @@ interface Props {
 
 export function HeaderNav({ locale, nav, label }: Props) {
   const path = neutralPath(usePathname());
-  const home = path === "/";
   const section = path.startsWith(`${directoryPath}/`) ? directoryPath : path;
 
   return (
-    <nav className={styles.nav} aria-label={label} data-home={home || undefined}>
+    <nav className={styles.nav} aria-label={label}>
       <ul>
         {navLinks(locale, nav).map((link) => (
           <li key={link.path}>
             <Link href={link.href} aria-current={link.path === section ? "page" : undefined}>
-              {home && link.path === "/services" ? nav.servicesShort : link.label}
+              {link.label}
             </Link>
           </li>
         ))}

@@ -20,6 +20,10 @@
   background: rgb(20 10 5 / 0.62);
 }
 
+.dialog:not([open]) {
+  pointer-events: none;
+}
+
 .panel {
   display: flex;
   flex-direction: column;
@@ -120,7 +124,7 @@
   background: none;
   color: var(--color-brown);
   font-size: 0.9375rem;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: underline;
 }
 
@@ -139,7 +143,7 @@
 .field label {
   color: var(--color-brown-soft);
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .field input,
@@ -151,7 +155,6 @@
   border-radius: 10px;
   background-color: #fff;
   color: var(--color-brown);
-  font-weight: 600;
 }
 
 .field input::placeholder {
@@ -248,5 +251,65 @@
 
   .grab {
     display: none;
+  }
+}
+
+/* Rises as a sheet on phones and slides in from its edge on desktop. Browsers
+   without discrete transitions open and close it at once. */
+@media (prefers-reduced-motion: no-preference) {
+  .dialog,
+  .dialog::backdrop {
+    transition: opacity 0.32s ease, display 0.32s allow-discrete, overlay 0.32s allow-discrete;
+  }
+
+  .panel {
+    transition: translate 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .dialog:not([open]) {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .dialog:not([open])::backdrop {
+    opacity: 0;
+  }
+
+  .dialog:not([open]) .panel {
+    translate: 0 100%;
+  }
+
+  @starting-style {
+    .dialog[open]::backdrop {
+      opacity: 0;
+    }
+
+    .dialog[open] .panel {
+      translate: 0 100%;
+    }
+  }
+
+  @media (min-width: 60rem) {
+    .dialog:not([open]) {
+      align-items: stretch;
+    }
+
+    .dialog:not([open]) .panel {
+      translate: -100% 0;
+    }
+
+    :global(html[dir="ltr"]) .dialog:not([open]) .panel {
+      translate: 100% 0;
+    }
+
+    @starting-style {
+      .dialog[open] .panel {
+        translate: -100% 0;
+      }
+
+      :global(html[dir="ltr"]) .dialog[open] .panel {
+        translate: 100% 0;
+      }
+    }
   }
 }

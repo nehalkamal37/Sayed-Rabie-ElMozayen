@@ -34,7 +34,7 @@
 
   /* Dubai is the brand typeface. It renders where installed; self-host it once
      a licensed webfont is supplied. IBM Plex Sans Arabic is the approved fallback. */
-  --font-brand: Dubai, "IBM Plex Sans Arabic", Tahoma, sans-serif;
+  --font-brand: Dubai, "IBM Plex Sans Arabic", "Plex Fallback", Tahoma, sans-serif;
 
   --gutter: 1rem;
   --radius: 0.75rem;

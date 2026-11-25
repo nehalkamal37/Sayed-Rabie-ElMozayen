@@ -23,8 +23,10 @@ npm run build
 | Privacy policy | `/privacy` | `/en/privacy` |
 | Booking request | `/book` | `/en/book` |
 
-The visual specification is `design-handoff/`, which covers home, services and the
-Madinaty branch page in Arabic. The other pages and all English pages follow from it.
+The visual specification is `design-handoff/`, which covers services and the Madinaty
+branch page in Arabic. The homepage follows its own later approved redesign
+(`src/views/home-view.tsx`, `src/components/home/`), with its own header and footer. The
+other pages and all English pages follow from these.
 
 Branches marked `draft` in `branches.ts`, and the privacy page, are labelled and
 `noindex`. Remove the flag once the client approves them. The privacy page holds no
@@ -66,7 +68,7 @@ Unapproved facts are `pending` and carry no value. Replace `pending` with
 `bookingPhone` is shown because every approved screen shows it. Set it to `pending`
 to remove it everywhere.
 
-Draft badges on the services page and the homepage branch finder are copy
+Draft badges on the services page and the homepage branch selector are copy
 (`services.draft`, `home.branches.draft`); remove them with the last pending fact.
 Every branch record has `detail` content, which makes its page in both languages.
 `socialProfiles` in `site.ts` come from the content plan; confirm the handles.
@@ -79,10 +81,9 @@ Structured data (Organization, OfferCatalog, HairSalon) is output only when
 - **Typeface**: Dubai comes first in the stack and renders only where installed.
   IBM Plex Sans Arabic (OFL, self-hosted) is the approved fallback. It is pinned to
   5.0.8 because later releases drop the lam-meem ligature seen in the approved screens.
-- **Photos**: all temporary. Every homepage photo is stock: the hero and haircut-and-beard
-  photos are CC BY 2.0 and need a visible credit if published; hair treatment, skin care,
-  groom and story are under the Pexels License. Services and Madinaty still use crops of one
-  image of unknown origin. Sources, credits and edits are in `src/data/photos.ts`.
+- **Photos**: all temporary. Homepage and groom photos are stock under the Pexels License.
+  Services and Madinaty still use crops of one image of unknown origin. Sources, credits and
+  edits are in `src/data/photos.ts`.
 - **Map**: a drawn placeholder on the branch page.
 - **Branch photos**: stock previews, labelled as such. None shows a real branch.
 

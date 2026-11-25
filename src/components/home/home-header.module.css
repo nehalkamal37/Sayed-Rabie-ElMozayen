@@ -1,0 +1,148 @@
+.header {
+  position: relative;
+  z-index: 4;
+  background: var(--color-beige);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  block-size: 72px;
+  padding-inline: 16px;
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  justify-self: start;
+  inline-size: 48px;
+  block-size: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-brown-deep);
+}
+
+.logo {
+  inline-size: 132px;
+  block-size: auto;
+}
+
+.language {
+  display: grid;
+  place-items: center;
+  justify-self: end;
+  min-inline-size: 48px;
+  block-size: 48px;
+}
+
+.header .language a {
+  color: var(--color-brown-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 59.99rem) {
+  .nav {
+    position: absolute;
+    inset-inline: 0;
+    display: grid;
+    padding: 8px 24px 28px;
+    background: var(--color-brown-deep);
+    visibility: hidden;
+    clip-path: inset(0 0 100%);
+  }
+
+  .nav[data-open="true"] {
+    visibility: visible;
+    clip-path: inset(0);
+  }
+
+  .nav a {
+    display: flex;
+    align-items: center;
+    min-block-size: 64px;
+    border-block-end: 1px solid rgb(231 208 175 / 0.22);
+    color: var(--color-off-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .nav :focus-visible {
+    outline-color: var(--color-gold);
+  }
+}
+
+@media (min-width: 60rem) {
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    block-size: 96px;
+    padding-inline: var(--edge);
+  }
+
+  .row {
+    display: contents;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .logo {
+    inline-size: 164px;
+  }
+
+  .language {
+    order: 2;
+    margin-inline-start: auto;
+  }
+
+  .nav {
+    display: flex;
+    gap: 36px;
+  }
+
+  .nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 48px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .nav a::after {
+    position: absolute;
+    inset: auto 0 6px;
+    block-size: 2px;
+    background: var(--color-brown-deep);
+    content: "";
+    scale: 0 1;
+    transform-origin: right;
+  }
+
+  :global(html[dir="ltr"]) .nav a::after {
+    transform-origin: left;
+  }
+
+  .nav a:hover::after,
+  .nav a:focus-visible::after {
+    scale: 1 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav {
+    transition:
+      clip-path 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+      visibility 0.4s;
+  }
+
+  .nav a::after {
+    transition: scale 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}

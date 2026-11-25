@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   // Keeps the dev badge from covering page content during client review.
   devIndicators: false,
+  images: { formats: ["image/avif", "image/webp"] },
 };
 
 export default nextConfig;

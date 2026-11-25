@@ -21,10 +21,7 @@ interface HandoffSource {
   readonly handoffFile: string;
 }
 
-/**
- * CC BY photos need this credit shown to visitors if they are ever published.
- * The Pexels License does not require one.
- */
+/** The Pexels License does not require a visible credit. */
 interface StockSource {
   readonly title: string;
   readonly credit: string;
@@ -47,14 +44,6 @@ const photo = (
   source: { handoffFile },
 });
 
-const stojkovic = (title: string, edits: string): StockSource => ({
-  title,
-  credit: "Nenad Stojkovic, via Wikimedia Commons",
-  licence: "CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/)",
-  url: `https://commons.wikimedia.org/wiki/File:${title.replaceAll(" ", "_")}`,
-  edits,
-});
-
 const pexels = (page: string, title: string, credit: string, edits: string): StockSource => ({
   title,
   credit: `${credit}, via Pexels`,
@@ -63,48 +52,8 @@ const pexels = (page: string, title: string, credit: string, edits: string): Sto
   edits,
 });
 
-const heroAlt: Localized = {
-  ar: "إيد حلاق بتقص شعر عميل بالمشط والمكنة، صورة من قريب",
-  en: "Close-up of a barber's hands cutting a client's hair with a comb and clippers",
-};
-
 export const photos = {
-  /** Mirrored for right-to-left text; flipped back for English. */
-  heroWide: {
-    src: "/photos-temporary/barber-comb-and-clipper-cut-wide.webp",
-    width: 1280,
-    height: 854,
-    alt: heroAlt,
-    source: stojkovic(
-      "Barber cutting hair with comb. Back view of man in barber shop.jpg",
-      "Mirrored, comb brand name removed",
-    ),
-  },
-  heroPortrait: {
-    src: "/photos-temporary/barber-comb-and-clipper-cut-portrait.webp",
-    width: 1000,
-    height: 1172,
-    alt: heroAlt,
-    source: stojkovic(
-      "Barber cutting hair with comb. Back view of young man in barber shop.jpg",
-      "Cropped, comb brand name removed",
-    ),
-  },
-  /** Homepage haircut-and-beard service. */
-  razorBeard: {
-    src: "/photos-temporary/straight-razor-beard-line-up.webp",
-    width: 1280,
-    height: 812,
-    alt: {
-      ar: "حلاق بيحدد ذقن عميل بالموس",
-      en: "Barber shaping a client's beard with a straight razor",
-    },
-    source: stojkovic(
-      "Attractive hairdresser is shaving male beard with the knife.jpg",
-      "Cropped, warmer tone",
-    ),
-  },
-  /** Homepage protein, treatment and colour service. */
+  /** Branch pages. */
   hairColour: {
     src: "/photos-temporary/hair-colour-brush-on-mans-hair.webp",
     width: 1300,
@@ -120,7 +69,7 @@ export const photos = {
       "Cropped to the hands and hair; teal background and clothing recoloured to warm beige",
     ),
   },
-  /** Homepage skin and care service. */
+  /** Branch pages. */
   faceMask: {
     src: "/photos-temporary/face-mask-brushed-on-man.webp",
     width: 1600,
@@ -136,7 +85,7 @@ export const photos = {
       "Cropped, warmer tone",
     ),
   },
-  /** Homepage groom package. */
+  /** Groom package and branch pages. */
   groomStyling: {
     src: "/photos-temporary/groom-in-suit-hair-styling.webp",
     width: 1400,
@@ -152,7 +101,7 @@ export const photos = {
       "Cropped, warmer tone",
     ),
   },
-  /** Homepage story section, the last image before the footer. */
+  /** Branch pages. */
   leatherChairs: {
     src: "/photos-temporary/leather-barber-chairs-brick-wall.webp",
     width: 1800,
@@ -166,6 +115,102 @@ export const photos = {
       "Brown Leather Barbers Chairs in a Barber Shop",
       "Marvin Sacdalan",
       "Darkened, warmer tone",
+    ),
+  },
+  /** Homepage protein, treatment and colour service. */
+  flatIron: {
+    src: "/photos-temporary/flat-iron-on-mans-short-hair.webp",
+    width: 1800,
+    height: 1200,
+    alt: {
+      ar: "حلاق بيفرد شعر عميل بالمكواة",
+      en: "Barber smoothing a client's hair with a flat iron",
+    },
+    source: pexels(
+      "a-person-holding-a-hair-iron-3916358",
+      "A Person Holding a Hair Iron",
+      "Davis Sánchez",
+      "Warmer tone, less saturated",
+    ),
+  },
+  /** Homepage skin and care service. */
+  clayMask: {
+    src: "/photos-temporary/clay-mask-brushed-on-mans-face.webp",
+    width: 1400,
+    height: 1974,
+    alt: {
+      ar: "شاب على وشه ماسك بيتفرد بالفرشة",
+      en: "Young man with a mask being spread on his face with a brush",
+    },
+    source: pexels(
+      "young-man-spreading-a-white-face-mask-with-a-brush-on-his-face-16672782",
+      "Young Man Spreading a White Face Mask with a Brush on His Face",
+      "Shiwa Yachachin",
+      "Cropped, brighter and warmer tone",
+    ),
+  },
+  /** Homepage groom package. */
+  groomChair: {
+    src: "/photos-temporary/groom-in-suit-barber-chair.webp",
+    width: 1400,
+    height: 2058,
+    alt: {
+      ar: "شاب ببدلة شيك قاعد على كرسي الحلاق بيجهز",
+      en: "Man in a formal suit reclining in a barber's chair as he gets ready",
+    },
+    source: pexels(
+      "man-in-elegant-suit-sitting-in-barbers-chair-17015346",
+      "Man in Elegant Suit Sitting in Barbers Chair",
+      "Luiz Woellner Fotografia",
+      "Cropped, brighter and warmer tone",
+    ),
+  },
+  /** Homepage booking section, the last image before the footer. */
+  readyChair: {
+    src: "/photos-temporary/vintage-barber-chair-ready.webp",
+    width: 1500,
+    height: 2250,
+    alt: {
+      ar: "كرسي حلاقة كلاسيك فاضي ومستني العميل اللي جاي",
+      en: "Classic barber chair standing empty, ready for the next client",
+    },
+    source: pexels(
+      "barber-chair-in-a-barber-shop-12201170",
+      "Barber Chair in a Barber Shop",
+      "Filip Rankovic Grobgaard",
+      "Warmer tone, less saturated",
+    ),
+  },
+  /** Homepage hero. */
+  barberAtWork: {
+    src: "/photos-temporary/barber-at-work-portrait.webp",
+    width: 1500,
+    height: 2115,
+    alt: {
+      ar: "حلاق مركز وهو بيظبط قصة عميل بالموس",
+      en: "Barber concentrating on a client's cut with a razor",
+    },
+    source: pexels(
+      "barber-cutting-person-s-hair-2076930",
+      "Barber Cutting Person's Hair",
+      "Th2city Santana",
+      "Cropped, warmer tone, less saturated",
+    ),
+  },
+  /** Homepage haircut-and-beard service. */
+  beardChair: {
+    src: "/photos-temporary/beard-shaping-close-up.webp",
+    width: 1500,
+    height: 1313,
+    alt: {
+      ar: "حلاق بيحدد ذقن عميل على الكرسي",
+      en: "Barber shaping a client's beard in the chair",
+    },
+    source: pexels(
+      "a-barber-grooming-a-man-s-beard-2881253",
+      "A Barber Grooming A Man's Beard",
+      "Th2city Santana",
+      "Cropped to the hands and beard, warmer tone",
     ),
   },
   cut: photo("scissors-and-comb-haircut", 900, 675, "h-svc-cut.jpg", {

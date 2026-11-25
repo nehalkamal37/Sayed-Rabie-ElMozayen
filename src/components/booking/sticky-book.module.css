@@ -20,6 +20,16 @@
   box-shadow: var(--shadow-sticky);
 }
 
+.button:active {
+  background: #a67a3d;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: #c4965a;
+  }
+}
+
 @media (min-width: 40rem) and (max-width: 59.99rem) {
   .bar {
     inset-inline: 0;

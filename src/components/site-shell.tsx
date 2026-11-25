@@ -9,7 +9,6 @@ import type { ReactNode } from "react";
 import { getDictionary } from "@/content";
 import { localeMeta, type Locale } from "@/i18n/config";
 import { BookingProvider } from "./booking/booking-provider";
-import { SiteHeader } from "./site-header";
 
 /** Document shell. Each language has its own root layout so lang and dir are server-rendered. */
 export function SiteShell({ locale, children }: { locale: Locale; children: ReactNode }) {
@@ -21,7 +20,6 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
           {common.skipToContent}
         </a>
         <BookingProvider locale={locale} copy={booking}>
-          <SiteHeader locale={locale} />
           {children}
         </BookingProvider>
       </body>

@@ -1,3 +1,44 @@
+/* Arial scaled to IBM Plex Sans Arabic, so lines keep their breaks when it loads. */
+@font-face {
+  font-family: "Plex Fallback";
+  font-weight: 400 500;
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 100.1%;
+  ascent-override: 108.9%;
+  descent-override: 42.0%;
+  unicode-range: U+0-5FF, U+2000-206F;
+}
+
+@font-face {
+  font-family: "Plex Fallback";
+  font-weight: 600 700;
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  size-adjust: 97.6%;
+  ascent-override: 111.7%;
+  descent-override: 43.0%;
+  unicode-range: U+0-5FF, U+2000-206F;
+}
+
+@font-face {
+  font-family: "Plex Fallback";
+  font-weight: 400 500;
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 111%;
+  ascent-override: 98.2%;
+  descent-override: 37.8%;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: "Plex Fallback";
+  font-weight: 600 700;
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  size-adjust: 117%;
+  ascent-override: 93.2%;
+  descent-override: 35.9%;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
 *,
 *::before,
 *::after {
@@ -151,11 +192,6 @@ main:focus {
   text-decoration: none;
 }
 
-.button:hover {
-  border-color: var(--color-beige);
-  background: var(--color-beige);
-}
-
 .button--outline {
   border-color: currentColor;
   background: transparent;
@@ -167,23 +203,46 @@ main:focus {
   color: var(--color-off-white);
 }
 
-.on-dark .button--outline:hover {
-  background: rgb(231 208 175 / 0.12);
-}
-
-.button--outline:hover {
-  background: var(--color-line-row);
-}
-
 .button--dark {
   border-color: var(--color-brown);
   background: var(--color-brown);
   color: var(--color-off-white);
 }
 
-.button--dark:hover {
-  border-color: var(--color-brown-deep);
-  background: var(--color-brown-deep);
+@media (hover: hover) {
+  .button:hover {
+    border-color: var(--color-beige);
+    background: var(--color-beige);
+  }
+
+  .button--outline:hover {
+    border-color: currentColor;
+    background: var(--color-line-row);
+  }
+
+  .on-dark .button--outline:hover {
+    background: rgb(231 208 175 / 0.12);
+  }
+
+  .button--dark:hover {
+    border-color: var(--color-brown-deep);
+    background: var(--color-brown-deep);
+  }
+}
+
+/* Controls shared across pages ease between states and dip slightly when pressed. */
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  button,
+  summary {
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+      translate 0.18s ease, scale 0.12s ease;
+  }
+
+  button:not(:disabled):active,
+  a[class]:active {
+    scale: 0.985;
+  }
 }
 
 .button:disabled {

@@ -86,6 +86,13 @@ export function BookingPanel({ locale, copy, preset, onClose }: Props) {
   const message = request ? buildMessage(locale, copy, request) : "";
   const branchName = branch ? getBranch(branch).name[locale] : "";
 
+  /** The panel stays mounted until its closing transition has run. */
+  async function finishClosing() {
+    const running = dialog.current?.getAnimations({ subtree: true }) ?? [];
+    await Promise.allSettled(running.map((animation) => animation.finished));
+    onClose();
+  }
+
   function closeFromBackdrop(event: MouseEvent) {
     if (event.target === dialog.current) dialog.current?.close();
   }
@@ -135,7 +142,7 @@ export function BookingPanel({ locale, copy, preset, onClose }: Props) {
       ref={dialog}
       className={styles.dialog}
       aria-labelledby="panel-title"
-      onClose={onClose}
+      onClose={finishClosing}
       onClick={closeFromBackdrop}
     >
       <div className={styles.panel}>

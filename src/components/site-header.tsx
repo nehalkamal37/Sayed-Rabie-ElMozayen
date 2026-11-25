@@ -23,8 +23,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             alt={brandName[locale]}
             width={520}
             height={181}
-            sizes="150px"
-            preload
+            sizes="(min-width: 60rem) 150px, 110px"
+            loading="eager"
           />
         </Link>
         <HeaderNav locale={locale} nav={common.nav} label={common.mainNav} />
