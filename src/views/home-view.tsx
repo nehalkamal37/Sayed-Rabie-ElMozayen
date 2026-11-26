@@ -16,6 +16,7 @@ import { MotionDirector } from "@/components/motion/motion-director";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getDictionary } from "@/content";
+import { regionIds, regionNames } from "@/data/branches";
 import { media, type Clip } from "@/data/media";
 import { localePath, type Locale } from "@/i18n/config";
 import { directoryPath, groomPath } from "@/lib/paths";
@@ -75,6 +76,7 @@ export function HomeView({ locale }: { locale: Locale }) {
   const name = words.slice(0, 2).join(" ");
   const rest = words.slice(2).join(" ");
   const [groomBefore, groomAfter] = groom.heading.split(groom.accent);
+  const regions = regionIds.map((id) => regionNames[id][locale]).join("  ·  ");
 
   return (
     <HomeSelection first="haircut-beard">
@@ -82,60 +84,50 @@ export function HomeView({ locale }: { locale: Locale }) {
       <SiteHeader locale={locale} overlay />
 
       <main id="content" tabIndex={-1} className={styles.page}>
-        {/* 1. Hero: film ground, portrait, and the name set large. */}
+        {/* 1. Hero: one frame of film, the name set across its lower edge. */}
         <section className={styles.hero} data-ground="dark" data-own-booking aria-labelledby="hero-heading">
-          <div className={styles.heroFilm}>{player(media.heroVideo)}</div>
-          <figure className={styles.portrait}>
-            <Image
-              src={media.ownerPortrait.src}
-              width={media.ownerPortrait.width}
-              height={media.ownerPortrait.height}
-              alt={media.ownerPortrait.alt[locale]}
-              sizes="(min-width: 60rem) 30vw, 46vw"
-              style={{ objectPosition: media.ownerPortrait.position }}
-              preload
-            />
-          </figure>
-          <div className={styles.heroText}>
-            <h1 id="hero-heading" className={styles.heroTitle}>
-              <span className={styles.question}>{question}</span>{" "}
-              <span className={styles.name}>
-                {locale === "ar" ? (
-                  <>
-                    <span className="visually-hidden">{name}</span>
-                    <Image
-                      className={styles.lettering}
-                      src="/brand/lettering-sayed-rabie-brown.webp"
-                      alt=""
-                      width={1164}
-                      height={344}
-                      sizes="(min-width: 60rem) 520px, 78vw"
-                      preload
-                    />
-                  </>
-                ) : (
-                  name
-                )}
-              </span>{" "}
-              <span className={styles.answer}>{rest}</span>
-            </h1>
+          <div className={styles.meta} aria-hidden="true">
+            <span>{question}</span>
+            <span className={styles.regions}>{regions}</span>
+          </div>
+          <div className={styles.frame} data-grade>
+            {player(media.heroVideo)}
+          </div>
+          <h1 id="hero-heading" className={styles.title}>
+            <span className="visually-hidden">{question} </span>
+            <span className={styles.name}>
+              {locale === "ar" ? (
+                <>
+                  <span className="visually-hidden">{name}</span>
+                  <Image
+                    className={styles.lettering}
+                    src="/brand/lettering-sayed-rabie-brown.webp"
+                    alt=""
+                    width={1164}
+                    height={344}
+                    sizes="(min-width: 60rem) 56vw, 88vw"
+                    preload
+                  />
+                </>
+              ) : (
+                name
+              )}
+            </span>{" "}
+            <span className={styles.answer}>{rest}</span>
+          </h1>
+          <div className={styles.actions}>
             <p className={styles.lede}>
               {home.place} <span className="only-desktop">{home.ledeShort}</span>
             </p>
-            <div className={styles.heroActions}>
-              <BookingLink className={styles.primary}>{common.bookNow}</BookingLink>
-              <p className={styles.call}>
-                {home.orCall} <PhoneLink locale={locale} />
-              </p>
-              <a className={styles.quiet} href="#branches">
-                <Icon name="pin" size={18} strokeWidth={1.6} />
-                {common.nav.branches}
-              </a>
-            </div>
+            <BookingLink className={styles.primary}>{common.bookNow}</BookingLink>
+            <p className={styles.call}>
+              {home.orCall} <PhoneLink locale={locale} />
+            </p>
+            <a className={styles.quiet} href="#branches">
+              <Icon name="pin" size={18} strokeWidth={1.6} />
+              {common.nav.branches}
+            </a>
           </div>
-          <a className={styles.cue} href="#story" aria-label={story.eyebrow}>
-            <span />
-          </a>
         </section>
 
         {/* 2. Story: the statement, the brand film, and the rotating promises. */}
@@ -151,7 +143,7 @@ export function HomeView({ locale }: { locale: Locale }) {
             <p>{story.body}</p>
           </div>
           <figure className={styles.film}>
-            <div className={styles.filmFrame} data-motion="curtain">
+            <div className={styles.filmFrame} data-motion="curtain" data-grade>
               {player(media.brandStoryVideo)}
             </div>
             <figcaption className={styles.note}>{reels.illustrative}</figcaption>
@@ -161,9 +153,9 @@ export function HomeView({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        {/* 3. Craft interlude: the tools on black, with the services drifting across. */}
+        {/* 3. Craft interlude: a razor over a flame, with the services drifting across. */}
         <section className={styles.craft} data-ground="dark" aria-label={home.services.eyebrow}>
-          <div className={styles.craftFilm} data-parallax>
+          <div className={styles.craftFilm} data-parallax data-grade>
             {player(media.craftVideo)}
           </div>
           <div className={styles.marquee} aria-hidden="true">
@@ -204,7 +196,7 @@ export function HomeView({ locale }: { locale: Locale }) {
 
         {/* 5. Groom: a film across the width, the offer set over its foot. */}
         <section id="groom" className={styles.groom} data-ground="dark" aria-labelledby="groom-heading">
-          <div className={styles.groomFilm} data-motion="curtain">
+          <div className={styles.groomFilm} data-motion="curtain" data-grade>
             {player(media.groomExperienceVideo)}
           </div>
           <div className={styles.groomBody}>
@@ -245,7 +237,7 @@ export function HomeView({ locale }: { locale: Locale }) {
               </Link>
             </div>
           </div>
-          <figure className={styles.groomStill} data-motion="curtain">
+          <figure className={styles.groomStill} data-motion="curtain" data-grade>
             <Image
               src={media.groomStill.src}
               width={media.groomStill.width}
@@ -265,18 +257,18 @@ export function HomeView({ locale }: { locale: Locale }) {
               <MaskedLines lines={twoLines(reels.heading)} accent={reels.accent} />
             </h2>
             <p className={styles.sectionLede}>{reels.lede}</p>
-            <p className={styles.note}>{reels.illustrative}</p>
           </div>
           <ReelGallery
             locale={locale}
             clips={media.barberingVideos}
             labels={{ ...videoLabels, previous: reels.previous, next: reels.next }}
+            note={reels.illustrative}
           />
         </section>
 
         {/* 7. Branches: the atmosphere, then the tiles, then how a request works. */}
         <section id="branches" className={styles.branches} aria-labelledby="branches-heading">
-          <div className={styles.atmosphere} data-parallax>
+          <div className={styles.atmosphere} data-parallax data-grade>
             {player(media.branchAtmosphere)}
           </div>
           <div className={styles.sectionHead}>

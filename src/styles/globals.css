@@ -548,3 +548,35 @@ main:focus {
     translate: 0 6%;
   }
 }
+
+/* House grade: one warm, slightly lifted look across every photo and clip, with grain,
+   so stock from different shoots reads as one campaign. */
+:root {
+  --grade: sepia(0.22) saturate(0.8) contrast(1.06) brightness(0.9);
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.4  0 0 0 0.09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+[data-grade] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-grade] :is(img, video) {
+  filter: var(--grade);
+}
+
+[data-grade]::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(130% 95% at 50% 45%, transparent 58%, rgb(10 8 6 / 0.5)),
+    var(--grain);
+  content: "";
+  pointer-events: none;
+}
+
+/* Media controls stay above the grade. */
+[data-grade] button {
+  z-index: 2;
+}

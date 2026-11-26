@@ -10,6 +10,8 @@ interface Props {
   readonly locale: Locale;
   readonly clips: readonly Clip[];
   readonly labels: { readonly play: string; readonly pause: string; readonly previous: string; readonly next: string };
+  /** Says the footage is illustrative. */
+  readonly note?: string;
 }
 
 /** The clip playing now, so starting another one stops it. */
@@ -19,7 +21,7 @@ let current: HTMLVideoElement | null = null;
  * Tall clips in a horizontal row that scrolls and snaps natively. Each plays only
  * when tapped, and only one plays at a time; nothing downloads until then.
  */
-export function ReelGallery({ locale, clips, labels }: Props) {
+export function ReelGallery({ locale, clips, labels, note }: Props) {
   const track = useRef<HTMLUListElement>(null);
 
   function step(direction: 1 | -1) {
@@ -41,6 +43,7 @@ export function ReelGallery({ locale, clips, labels }: Props) {
         ))}
       </ul>
       <div className={styles.arrows}>
+        {note ? <p className={styles.note}>{note}</p> : null}
         <button type="button" className={styles.arrow} aria-label={labels.previous} onClick={() => step(-1)}>
           <Icon name="arrow" size={22} strokeWidth={1.6} />
         </button>
@@ -66,21 +69,43 @@ function Reel({
   const video = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
-  function toggle() {
+  function start() {
     const element = video.current;
     if (!element) return;
-    if (!element.paused) {
-      element.pause();
-      return;
-    }
     if (current && current !== element) current.pause();
     current = element;
     if (!element.getAttribute("src")) element.src = clip.src;
     element.play().catch(() => setPlaying(false));
   }
 
+  // With a mouse, resting on a clip previews it; leaving stops it unless it was clicked.
+  const held = useRef(false);
+
+  function toggle() {
+    const element = video.current;
+    if (!element) return;
+    // A click on a previewing clip keeps it playing; otherwise it toggles.
+    if (!element.paused && !held.current) {
+      held.current = true;
+      return;
+    }
+    held.current = element.paused;
+    if (element.paused) start();
+    else element.pause();
+  }
+  function preview(on: boolean) {
+    if (!matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches) return;
+    if (on) start();
+    else if (!held.current) video.current?.pause();
+  }
+
   return (
-    <figure className={styles.reel} data-playing={playing || undefined}>
+    <figure
+      className={styles.reel}
+      data-playing={playing || undefined}
+      onPointerEnter={(event) => event.pointerType === "mouse" && preview(true)}
+      onPointerLeave={(event) => event.pointerType === "mouse" && preview(false)}
+    >
       <video
         ref={video}
         poster={clip.poster}

@@ -14,17 +14,17 @@ illustrative. Files are unaltered downloads; posters are single frames taken fro
 | Services: skin care | `stock-face-mask.mp4` | "Applying Mud Mask in a Man's Face Using Brushes" (Pexels 6975347) | 19.4 s, 1366×720, no audio, 3.1 MB | https://www.pexels.com/video/applying-mud-mask-in-a-man-s-face-using-brushes-6975347/ | Pexels License |
 | Groom film | `stock-groom-bow-tie.mp4` | "Groom adjusting the bow tie of his tuxedo" (Mixkit 5185) | 15.6 s, 1280×720, no audio, 4.8 MB | https://mixkit.co/free-stock-video/groom-adjusting-the-bow-tie-of-his-tuxedo-5185/ | Mixkit Stock Video Free License |
 | Branches atmosphere | `stock-barber-chairs.mp4` | "Male Barber Chairs" (Mixkit 43236) | 12.4 s, 1280×720, no audio, 4.3 MB | https://mixkit.co/free-stock-video/male-barber-chairs-43236/ | Mixkit Stock Video Free License |
-| Brand story film | `stock-razor-flame.mp4` | "Male Hands Sterilizing Razor Close-Up" (Pexels 5450144) | 12.8 s, 1280×720, no audio, 2.6 MB | https://www.pexels.com/video/male-hands-sterilizing-razor-close-up-5450144/ | Pexels License |
-| Craft interlude | `stock-tools-on-black.mp4` | "Hair Cutting Tools" (Pexels 7697179) | 9.2 s, 1280×720, no audio, 3.1 MB | https://www.pexels.com/video/hair-cutting-tools-7697179/ | Pexels License |
+| Craft interlude | `stock-razor-flame.mp4` | "Male Hands Sterilizing Razor Close-Up" (Pexels 5450144) | 12.8 s, 1280×720, no audio, 2.6 MB | https://www.pexels.com/video/male-hands-sterilizing-razor-close-up-5450144/ | Pexels License |
+| Brand story film | `stock-tools-on-black.mp4` | "Hair Cutting Tools" (Pexels 7697179) | 9.2 s, 1280×720, no audio, 3.1 MB | https://www.pexels.com/video/hair-cutting-tools-7697179/ | Pexels License |
 | Reels | `stock-vertical-shave.mp4` | "Barber Shaving a Man's Beard" (Pexels 7426681) | 15.0 s, 540×960, no audio, 0.6 MB | https://www.pexels.com/video/barber-shaving-a-man-s-beard-7426681/ | Pexels License |
 | Reels | `stock-vertical-clippers.mp4` | "Barber Trimming a Man's Beard" (Pexels 7697102) | 10.9 s, 540×960, no audio, 1.1 MB | https://www.pexels.com/video/barber-trimming-a-man-s-beard-7697102/ | Pexels License |
 | Reels | `stock-vertical-haircut.mp4` | "Haircut at Barber Shop" (Pexels 7697084) | 7.5 s, 540×960, no audio, 1.3 MB | https://www.pexels.com/video/haircut-at-barber-shop-7697084/ | Pexels License |
 | Reels | `stock-vertical-tools.mp4` | "A Different Types of Barber Tools on the Table" (Pexels 8867303) | 11.1 s, 540×960, no audio, 0.7 MB | https://www.pexels.com/video/a-different-types-of-barber-tools-on-the-table-8867303/ | Pexels License |
 
 Downloaded 2026-11-26. Photos in `public/photos-temporary/` are Pexels stock, credited in
-`src/data/photos.ts`. The hero portrait (`public/DQw0pW7X0LnC83fdepEJYPC30.avif`) was
-placed by the team; it also appears on saeidrabie.com, so its identity and usage rights
-must be confirmed before Production. Each clip's page showed its license at download time.
+`src/data/photos.ts`. The portrait placed earlier (`public/DQw0pW7X0LnC83fdepEJYPC30.avif`)
+is no longer shown: it is published on saeidrabie.com and is not confirmed to show
+Sayed Rabie. `ownerPortrait` in `src/data/media.ts` stays empty until an approved photo arrives. Each clip's page showed its license at download time.
 
 ## Licenses
 

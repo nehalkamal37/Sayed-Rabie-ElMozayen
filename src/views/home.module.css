@@ -79,138 +79,121 @@
   background: #a5876a;
 }
 
-/* 1. Hero */
+/* 1. Hero: one frame of film, the name set across its lower edge */
 
 .hero {
-  position: relative;
   display: grid;
-  align-content: end;
+  align-content: start;
   min-block-size: 100svh;
-  padding: 0 var(--gutter) 36px;
+  padding: 84px var(--gutter) 28px;
   overflow: clip;
   background: var(--color-brown-deep);
   color: var(--color-paper);
 }
 
-.heroFilm {
-  position: absolute;
-  inset: 0;
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-block-end: 14px;
+  color: var(--color-ivory);
+  font-size: 1.0625rem;
 }
 
-.heroFilm video {
-  filter: saturate(0.85) brightness(0.6);
+.regions {
+  color: var(--color-tan);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-/* Shade that lets the type sit on the film. */
-.heroFilm::after {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(0deg, var(--color-brown-deep) 4%, rgb(23 19 16 / 0.55) 42%, rgb(23 19 16 / 0.2) 70%, rgb(23 19 16 / 0.6)),
-    radial-gradient(120% 70% at 50% 110%, rgb(23 19 16 / 0.7), rgb(23 19 16 / 0));
-  content: "";
-  pointer-events: none;
+:global([dir="rtl"]) .regions {
+  font-size: 0.8125rem;
+  letter-spacing: 0;
 }
 
-/* The film's control sits under the header at the reading start, opposite the portrait
-   and clear of the booking row. */
-.hero .heroFilm button {
-  z-index: 3;
-  inset: 92px auto auto var(--gutter);
+/* The frame: the one picture on the first screen, sized to leave room for the name
+   and the booking action beneath it. */
+.frame {
+  block-size: clamp(220px, calc(100svh - 430px), 560px);
+  overflow: hidden;
+  background: #0d0b09;
+}
+
+.frame video {
+  object-position: 16% 40% !important;
+}
+
+/* Its pause control sits at the top inner corner, away from the name. */
+.hero .frame button {
+  inset: 12px 12px auto auto;
   translate: none;
 }
 
-:global([dir="rtl"]) .hero .heroFilm button {
-  inset: 92px var(--gutter) auto auto;
+:global([dir="rtl"]) .hero .frame button {
+  inset: 12px auto auto 12px;
 }
 
-/* The portrait: a tall frame high at the reading end. */
-.portrait {
-  position: absolute;
-  inset-block-start: 92px;
-  inset-inline-end: var(--gutter);
-  z-index: 1;
-  inline-size: 44vw;
-  aspect-ratio: 3 / 4;
-  margin: 0;
-  overflow: hidden;
-  outline: 1px solid rgb(185 154 120 / 0.55);
-  outline-offset: 8px;
-}
-
-.portrait img {
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: cover;
-}
-
-.heroText {
+.title {
   position: relative;
-  z-index: 2;
-  display: grid;
-  gap: 18px;
-}
-
-.heroTitle {
+  z-index: 3;
   display: grid;
   font-family: var(--font-display);
   font-weight: 400;
 }
 
-.question {
-  color: var(--color-ivory);
-  font-family: var(--font-brand);
-  font-size: 1.25rem;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
-/* The name: serif italic in English, the logo's own lettering in Arabic. */
+/* The name crosses the frame's lower edge: half on the picture, half on the ground. */
 .name {
+  margin-block-start: -0.5em;
   color: var(--color-paper);
   font-family: var(--font-serif);
-  font-size: clamp(4rem, 19vw, 11rem);
+  font-size: clamp(4.25rem, 19.5vw, 15rem);
   font-style: italic;
   font-weight: 400;
-  line-height: 0.92;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+:global([dir="rtl"]) .name {
+  margin-block-start: -0.62em;
 }
 
 .lettering {
-  inline-size: min(80vw, 34rem);
+  inline-size: min(88vw, 52rem);
   block-size: auto;
-  margin-block: 6px -4px;
-  filter: brightness(0) invert(0.96) sepia(0.12);
+  filter: brightness(0) invert(0.96) sepia(0.12) drop-shadow(0 8px 24px rgb(0 0 0 / 0.45));
 }
 
 .answer {
+  margin-block-start: 2px;
   color: var(--color-paper);
-  font-size: clamp(2.5rem, 11.5vw, 6.5rem);
-  line-height: 1;
+  font-size: clamp(2.125rem, 10vw, 5rem);
+  line-height: 1.05;
 }
 
 :global([dir="rtl"]) .answer {
-  font-size: clamp(2.375rem, 12vw, 6rem);
+  font-size: clamp(2rem, 10vw, 4.5rem);
   font-weight: 300;
-  line-height: 1.25;
+  line-height: 1.3;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  align-items: center;
+  margin-block-start: 18px;
+}
+
+.actions .primary {
+  flex: 1 1 100%;
 }
 
 .lede {
-  max-inline-size: 40ch;
-  color: var(--color-tan);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-}
-
-.heroActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 24px;
-  align-items: center;
-  margin-block-start: 6px;
-}
-
-.heroActions .primary {
-  flex: 1 1 100%;
+  display: none;
 }
 
 .call {
@@ -234,11 +217,6 @@
   color: var(--color-paper);
   font-weight: 600;
   text-decoration: none;
-}
-
-/* A thin line that runs down toward the story. Desktop only. */
-.cue {
-  display: none;
 }
 
 /* 2. Story */
@@ -578,77 +556,51 @@
 
 @media (min-width: 60rem) {
   .hero {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    padding: 0 var(--gutter) 72px;
+    padding: 104px var(--edge) 40px;
   }
 
-  .heroText {
-    grid-column: 1 / span 8;
-    gap: 24px;
+  .meta {
+    font-size: 1.25rem;
   }
 
-  .portrait {
-    inset-block-start: 16vh;
-    inline-size: min(28vw, 460px);
+  .frame {
+    block-size: clamp(300px, calc(100svh - 480px), 600px);
   }
 
-  .question {
-    font-size: 1.5rem;
+  .frame video {
+    object-position: 50% 42% !important;
   }
 
   .name {
-    font-size: min(10vw, 11.5rem);
+    font-size: min(14vw, 15rem);
   }
 
   .lettering {
-    inline-size: min(44vw, 40rem);
+    inline-size: min(48vw, 46rem);
   }
 
   .answer {
-    font-size: min(6vw, 7rem);
+    font-size: min(5.2vw, 5.5rem);
   }
 
-  .heroActions .primary {
+  .actions {
+    margin-block-start: 22px;
+    gap: 12px 32px;
+  }
+
+  .actions .primary {
     flex: none;
+    order: -1;
   }
 
-  .cue {
-    position: absolute;
-    inset-block-end: 40px;
-    inset-inline-end: var(--gutter);
-    z-index: 2;
+  .lede {
     display: block;
-    inline-size: 20px;
-    block-size: 88px;
-  }
-
-  .cue span {
-    position: absolute;
-    inset-inline-start: 50%;
-    inline-size: 1px;
-    block-size: 100%;
-    background: rgb(247 244 238 / 0.25);
-    overflow: hidden;
-  }
-
-  .cue span::after {
-    position: absolute;
-    inset: 0;
-    background: var(--color-gold);
-    content: "";
-    scale: 1 0.3;
-    transform-origin: top;
-  }
-
-  .hero .heroFilm button {
-    inset-block-start: auto;
-    inset-block-end: 40px;
-    inset-inline-start: auto;
-    inset-inline-end: calc(var(--gutter) + 48px);
-  }
-
-  :global([dir="rtl"]) .hero .heroFilm button {
-    inset: auto auto 40px calc(var(--gutter) + 48px);
+    flex: 1 1 22rem;
+    max-inline-size: 30rem;
+    order: 3;
+    margin-inline-start: auto;
+    color: var(--color-tan);
+    line-height: 1.7;
   }
 
   .story {
@@ -777,36 +729,26 @@
 
 /* Motion. The booking action is never held: it is usable from the first frame. */
 @media (prefers-reduced-motion: no-preference) {
-  .heroFilm video {
-    animation: film-in 2.6s var(--ease-settle) both;
+  /* The frame opens from its centre line, like a shutter; the film settles inside. */
+  .frame {
+    animation: shutter 1.5s var(--ease-travel) 0.1s both;
   }
 
-  .portrait {
-    animation: curtain-up 1.6s var(--ease-travel) 0.25s both;
+  .frame video {
+    animation: settle 2.6s var(--ease-settle) 0.1s both;
   }
 
-  .portrait img {
-    animation: settle 2.2s var(--ease-settle) 0.25s both;
+  .meta {
+    animation: fade-in 1s ease 0.9s both;
   }
 
-  .question {
-    animation: rise-in 1s var(--ease-settle) 0.45s both;
-  }
-
+  /* The name arrives last and largest, rising across the frame's edge. */
   .name {
-    animation: unveil 1.4s var(--ease-settle) 0.6s both;
+    animation: name-in 1.5s var(--ease-settle) 0.55s both;
   }
 
   .answer {
-    animation: rise-in 1.2s var(--ease-settle) 0.85s both;
-  }
-
-  .lede {
-    animation: rise-in 1.2s var(--ease-settle) 1s both;
-  }
-
-  .cue span::after {
-    animation: cue 2.4s var(--ease-travel) 1.6s infinite;
+    animation: rise-in 1.2s var(--ease-settle) 0.9s both;
   }
 
   .marqueeTrack {
@@ -836,23 +778,6 @@
   }
 }
 
-@keyframes film-in {
-  from {
-    opacity: 0;
-    scale: 1.14;
-  }
-}
-
-@keyframes curtain-up {
-  from {
-    clip-path: inset(100% 0 0 0);
-  }
-
-  to {
-    clip-path: inset(0);
-  }
-}
-
 @keyframes settle {
   from {
     scale: 1.22;
@@ -866,28 +791,6 @@
   }
 }
 
-@keyframes unveil {
-  from {
-    clip-path: inset(0 0 100% 0);
-    translate: 0 24%;
-  }
-
-  to {
-    clip-path: inset(-10% -5% -20% -5%);
-    translate: 0 0;
-  }
-}
-
-@keyframes cue {
-  from {
-    translate: 0 -100%;
-  }
-
-  to {
-    translate: 0 340%;
-  }
-}
-
 @keyframes drift {
   to {
     translate: -50% 0;
@@ -897,5 +800,28 @@
 @keyframes drift-rtl {
   to {
     translate: 50% 0;
+  }
+}
+
+@keyframes shutter {
+  from {
+    clip-path: inset(50% 0 50% 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes name-in {
+  from {
+    opacity: 0;
+    translate: 0 0.35em;
   }
 }

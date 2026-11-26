@@ -62,29 +62,22 @@ export const media = {
   }),
 
   /**
-   * Hero portrait. Placed by the team; the same image is published on
-   * saeidrabie.com, so its identity and usage rights must be confirmed before
-   * Production. Replace with an approved photo of Sayed Rabie.
+   * Portrait of Sayed Rabie. Empty until an approved photo with confirmed usage rights
+   * is supplied; nothing renders in its place. (The image placed earlier is published
+   * on saeidrabie.com and is not confirmed to show him.)
    */
-  ownerPortrait: {
-    src: "/DQw0pW7X0LnC83fdepEJYPC30.avif",
-    width: 1400,
-    height: 1838,
-    alt: { ar: "بورتريه", en: "Portrait" },
-    position: "64% 6%",
-    temporary: true,
-  } satisfies Still,
+  ownerPortrait: null as Still | null,
 
-  /** The film in the brand story. TEMPORARY stock: Pexels 5450144. */
-  brandStoryVideo: clip("stock-razor-flame", wide, "50% 50%", {
-    ar: "موس حلاقة بيتعقم على النار",
-    en: "A straight razor being sterilised over a flame",
-  }),
-
-  /** Full-width interlude between the story and the services. TEMPORARY stock: Pexels 7697179. */
-  craftVideo: clip("stock-tools-on-black", wide, "50% 50%", {
+  /** The film in the brand story. TEMPORARY stock: Pexels 7697179. */
+  brandStoryVideo: clip("stock-tools-on-black", wide, "50% 50%", {
     ar: "موس ومقص ومشط على قماش أسود",
     en: "A straight razor, scissors and a comb on black cloth",
+  }),
+
+  /** Full-width interlude between the story and the services. TEMPORARY stock: Pexels 5450144. */
+  craftVideo: clip("stock-razor-flame", wide, "50% 50%", {
+    ar: "موس حلاقة بيتعقم على النار",
+    en: "A straight razor being sterilised over a flame",
   }),
 
   /** The short-form gallery, tall clips. TEMPORARY stock: Pexels. */
@@ -96,10 +89,6 @@ export const media = {
     clip("stock-vertical-clippers", tall, "50% 30%", {
       ar: "حلاق ماسك الماكينة",
       en: "A barber with his clippers",
-    }),
-    clip("stock-hair-colour", tall, "50% 30%", {
-      ar: "صبغة بتتحط على الشعر بالفرشاة",
-      en: "Colour brushed onto hair",
     }),
     clip("stock-vertical-haircut", tall, "50% 35%", {
       ar: "قصة شعر بالمقص والمشط",
