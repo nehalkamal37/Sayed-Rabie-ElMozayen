@@ -6,7 +6,7 @@
 
 .item {
   border: 1px solid var(--color-line-card);
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: #fff;
 }
 
@@ -52,7 +52,7 @@
   .item {
     padding: 22px;
     border: 0;
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--color-off-white);
   }
 

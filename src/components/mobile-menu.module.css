@@ -4,7 +4,7 @@
   inline-size: 2.75rem;
   block-size: 2.75rem;
   border: 1px solid rgb(231 208 175 / 0.35);
-  border-radius: 10px;
+  border-radius: var(--radius);
   background: transparent;
   color: var(--color-off-white);
 }

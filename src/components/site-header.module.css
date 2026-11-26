@@ -1,6 +1,20 @@
 .header {
   position: relative;
   z-index: 6;
+  background: var(--color-brown-deep);
+}
+
+/* Over the homepage hero: clear until the page moves, then the same solid bar. */
+.header[data-overlay] {
+  position: fixed;
+  inset-inline: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+:global(html[data-scrolled]) .header[data-overlay] {
+  background: rgb(23 19 16 / 0.86);
+  backdrop-filter: blur(14px);
 }
 
 .bar {
@@ -8,7 +22,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  padding: 12px 16px;
+  padding: 12px var(--gutter);
 }
 
 .brand {
@@ -19,7 +33,7 @@
 
 .brand img {
   inline-size: auto;
-  block-size: 38px;
+  block-size: 36px;
 }
 
 .nav {
@@ -41,11 +55,23 @@
     border-block-end: 1px solid var(--color-line-dark);
   }
 
+  .header[data-overlay] {
+    border-color: transparent;
+  }
+
+  :global(html[data-scrolled]) .header[data-overlay] {
+    border-color: var(--color-line-dark);
+  }
+
   .bar {
     gap: 1.5rem;
-    max-inline-size: 81.5rem;
+    max-inline-size: 90rem;
     margin-inline: auto;
-    padding: 18px 32px;
+    padding: 20px var(--gutter);
+  }
+
+  :global(html[data-scrolled]) .header[data-overlay] .bar {
+    padding-block: 12px;
   }
 
   .brand {
@@ -53,7 +79,11 @@
   }
 
   .brand img {
-    block-size: 52px;
+    block-size: 50px;
+  }
+
+  :global(html[data-scrolled]) .header[data-overlay] .brand img {
+    block-size: 40px;
   }
 
   .nav {
@@ -62,13 +92,32 @@
 
   .nav ul {
     display: flex;
-    gap: 28px;
+    gap: 34px;
   }
 
   .nav a {
+    position: relative;
+    padding-block: 6px;
     color: var(--color-beige);
+    font-size: 0.9375rem;
     font-weight: 500;
+    letter-spacing: 0.02em;
     text-decoration: none;
+  }
+
+  /* A champagne hairline that draws under the link on hover and marks the page. */
+  .nav a::after {
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 1px;
+    background: var(--color-gold);
+    content: "";
+    scale: 0 1;
+    transform-origin: var(--from, left) center;
+  }
+
+  :global([dir="rtl"]) .nav a::after {
+    --from: right;
   }
 
   .nav a:hover,
@@ -76,26 +125,48 @@
     color: #fff;
   }
 
-  .nav a[aria-current] {
-    padding-block-end: 4px;
-    border-block-end: 2px solid var(--color-gold);
+  .nav a:hover::after,
+  .nav a[aria-current]::after {
+    scale: 1 1;
   }
 
   .actions {
-    gap: 16px;
+    gap: 18px;
   }
 
   .book {
     display: block;
-    padding: 12px 22px;
-    border-radius: 10px;
+    padding: 12px 26px;
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius);
     background: var(--color-gold);
     color: var(--color-on-gold);
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     text-decoration: none;
   }
 
   .book:hover {
-    background: var(--color-off-white);
+    background: transparent;
+    color: var(--color-gold);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header {
+    transition:
+      background-color 0.4s ease,
+      border-color 0.4s ease;
+  }
+
+  .bar,
+  .brand img {
+    transition:
+      padding 0.4s var(--ease-settle),
+      block-size 0.4s var(--ease-settle);
+  }
+
+  .nav a::after {
+    transition: scale 0.5s var(--ease-settle);
   }
 }

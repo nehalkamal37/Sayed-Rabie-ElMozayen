@@ -100,7 +100,7 @@
   gap: 4px;
   min-block-size: 64px;
   border: 1px solid transparent;
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: var(--color-brown-dark);
   font-size: 0.875rem;
   font-weight: 600;
@@ -143,7 +143,7 @@
 .card {
   overflow: hidden;
   border: 1px solid var(--color-line-card);
-  border-radius: 16px;
+  border-radius: var(--radius);
   background: #fff;
 }
 
@@ -167,7 +167,7 @@
 
 .map .blockA,
 .map .blockB {
-  border-radius: 6px;
+  border-radius: var(--radius);
   background: #d9cbb3;
 }
 
@@ -201,7 +201,7 @@
   inset-block-end: 8px;
   inset-inline-start: 8px;
   padding: 3px 8px;
-  border-radius: 6px;
+  border-radius: var(--radius);
   background: #fff;
   font-size: 0.75rem;
   font-weight: 700;
@@ -248,7 +248,7 @@
   min-block-size: 51px;
   margin: 0 14px 14px;
   border: 1.5px solid var(--color-brown);
-  border-radius: 12px;
+  border-radius: var(--radius);
   font-weight: 700;
   text-decoration: none;
 }
@@ -286,7 +286,7 @@
   padding-block: 10px;
   padding-inline: 12px 10px;
   border: 1px solid var(--color-line-card);
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: #fff;
 }
 
@@ -314,7 +314,7 @@
   min-block-size: 44px;
   padding: 0 14px;
   border: 1.5px solid var(--color-brown);
-  border-radius: 10px;
+  border-radius: var(--radius);
   font-size: 0.9375rem;
   font-weight: 700;
   text-decoration: none;
@@ -361,7 +361,7 @@
   inline-size: 100%;
   block-size: 220px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: var(--radius);
 }
 
 /* Questions, nearby */
@@ -495,7 +495,7 @@
     align-items: center;
     min-block-size: 56px;
     padding: 0 28px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     background: var(--color-gold);
     color: var(--color-on-gold);
     font-size: 1.125rem;
@@ -549,7 +549,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    border-radius: 18px;
+    border-radius: var(--radius);
   }
 
   .map {
@@ -564,7 +564,7 @@
 
   .map .blockA,
   .map .blockB {
-    border-radius: 8px;
+    border-radius: var(--radius);
   }
 
   .map .blockA {
@@ -620,7 +620,7 @@
     gap: 10px;
     padding: 20px 22px;
     border: 1px solid var(--color-line-card);
-    border-radius: 18px;
+    border-radius: var(--radius);
     background: #fff;
   }
 
@@ -665,7 +665,7 @@
   .serviceList li {
     gap: 12px;
     padding: 14px 16px;
-    border-radius: 14px;
+    border-radius: var(--radius);
   }
 
   .serviceText h3 {
@@ -699,7 +699,7 @@
 
   .strip img {
     block-size: 300px;
-    border-radius: 16px;
+    border-radius: var(--radius);
   }
 
   .questionsBand {

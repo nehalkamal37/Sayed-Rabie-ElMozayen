@@ -12,6 +12,7 @@ import {
 } from "@/components/services/branch-choice";
 import { getDictionary } from "@/content";
 import { getBranch } from "@/data/branches";
+import { media } from "@/data/media";
 import { photos } from "@/data/photos";
 import { serviceGroups, servicesInGroup, type Service, type ServiceGroup } from "@/data/services";
 import type { Verifiable } from "@/data/verification";
@@ -26,7 +27,18 @@ export function ServicesView({ locale }: { locale: Locale }) {
     <PageFrame locale={locale}>
       <ServicesJsonLd locale={locale} name={copy.heading} />
       <BranchChoiceProvider>
-        <section className="on-dark">
+        <section className={`on-dark ${styles.heroBand}`}>
+          <div className={styles.heroImage} data-parallax>
+            <Image
+              src={media.pageHeroes.services.src}
+              width={media.pageHeroes.services.width}
+              height={media.pageHeroes.services.height}
+              alt=""
+              sizes="100vw"
+              style={{ objectPosition: media.pageHeroes.services.position }}
+              preload
+            />
+          </div>
           <div className={styles.hero}>
             <div className={styles.heroText}>
               <nav className={styles.crumbs} aria-label={common.breadcrumb}>
@@ -121,13 +133,13 @@ function Group({ locale, group }: { locale: Locale; group: ServiceGroup }) {
   const headingId = `${group.id}-heading`;
   return (
     <section id={group.id} className={styles.group} aria-labelledby={headingId}>
-      <div className={styles.groupHead}>
+      <div className={styles.groupHead} data-motion="curtain">
         <Image
           src={group.photo.src}
           width={group.photo.width}
           height={group.photo.height}
           alt=""
-          sizes="80px"
+          sizes="(min-width: 60rem) 60vw, 100vw"
           style={{ objectPosition: group.photoPosition }}
         />
         <h2 id={headingId}>{group.name[locale]}</h2>

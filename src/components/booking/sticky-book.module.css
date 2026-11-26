@@ -11,7 +11,7 @@
   justify-content: center;
   gap: 10px;
   min-block-size: 60px;
-  border-radius: 14px;
+  border-radius: var(--radius);
   background: var(--color-gold);
   color: var(--color-on-gold);
   font-size: 1.1875rem;

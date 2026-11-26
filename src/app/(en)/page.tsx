@@ -10,5 +10,5 @@ export const metadata = pageMetadata("en", "/", {
 });
 
 export default function Page() {
-  return <HomeView locale="en" revision typography="signature" />;
+  return <HomeView locale="en" />;
 }

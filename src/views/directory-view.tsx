@@ -3,6 +3,7 @@ import { BranchDirectory } from "@/components/directory/branch-directory";
 import { PageFrame } from "@/components/page-frame";
 import { PageHero } from "@/components/page-hero";
 import { getDictionary } from "@/content";
+import { media } from "@/data/media";
 import type { Locale } from "@/i18n/config";
 import styles from "./directory-view.module.css";
 
@@ -17,6 +18,7 @@ export function DirectoryView({ locale }: { locale: Locale }) {
           crumb={common.nav.branches}
           lede={directory.lede}
           draft={directory.draft}
+          image={media.pageHeroes.branches}
         />
       </section>
       <div className={`container ${styles.body}`}>

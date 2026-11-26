@@ -1,5 +1,7 @@
 /** Stroke icons from design-handoff/assets/icons. */
 const paths = {
+  /** Points toward the line's end in left-to-right text; mirror it for Arabic. */
+  arrow: <path d="M4 12h16M14 6l6 6-6 6" />,
   calendar: (
     <>
       <rect x="4" y="5" width="16" height="15" rx="2" />

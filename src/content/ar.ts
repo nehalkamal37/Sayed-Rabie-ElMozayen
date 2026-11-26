@@ -131,6 +131,21 @@ export const ar = {
       resume: "كمّل تغيير الجمل",
     },
     reviews: { heading: "قالوا إيه عن المزين" },
+    /** Words carried across the craft interlude. */
+    craft: ["قصة", "ذقن", "صبغة", "بشرة", "عريس"],
+    reels: {
+      eyebrow: "عن قرب",
+      heading: "التفاصيل هي اللي بتفرق",
+      accent: "بتفرق",
+      lede: "الموس، المقص، الفرشاة. كل خطوة ليها وقتها.",
+      /** Shown wherever stock footage stands in for El Mozayen's own. */
+      illustrative: "لقطات توضيحية",
+      previous: "اللقطة اللي قبل",
+      next: "اللقطة اللي بعد",
+    },
+    end: {
+      eyebrow: "المعاد الجاي",
+    },
   },
   services: {
     metaTitle: "أسعار حلاقة رجالي 2026: قص، ذقن، بروتين | سيد ربيع المزين",

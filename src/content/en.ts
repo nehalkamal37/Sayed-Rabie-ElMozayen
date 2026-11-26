@@ -131,6 +131,21 @@ export const en: Dictionary = {
       resume: "Resume the rotating phrases",
     },
     reviews: { heading: "What our clients say" },
+    /** Words carried across the craft interlude. */
+    craft: ["Haircut", "Beard", "Colour", "Skin", "Groom"],
+    reels: {
+      eyebrow: "Up close",
+      heading: "The details make the difference",
+      accent: "difference",
+      lede: "Razor, scissors, brush. Every step takes the time it needs.",
+      /** Shown wherever stock footage stands in for El Mozayen's own. */
+      illustrative: "Illustrative footage",
+      previous: "Previous clip",
+      next: "Next clip",
+    },
+    end: {
+      eyebrow: "Your next visit",
+    },
   },
   services: {
     metaTitle: "Men's Haircut Prices in Cairo 2026 | Sayed Rabie",

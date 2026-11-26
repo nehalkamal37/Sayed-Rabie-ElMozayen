@@ -39,23 +39,77 @@
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
 }
 
-/* Drawn accents (OFL): Aref Ruqaa Ink for Arabic, Alex Brush for English. */
+/* Display faces (OFL): Cormorant Garamond for English, Alexandria for Arabic. */
 @font-face {
-  font-family: "Accent Script";
+  font-family: "Cormorant Garamond";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../../node_modules/@fontsource/aref-ruqaa-ink/files/aref-ruqaa-ink-arabic-700-normal.woff2") format("woff2");
+  src: url("../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+@font-face {
+  font-family: "Alexandria";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/alexandria/files/alexandria-arabic-300-normal.woff2") format("woff2");
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
 }
 
 @font-face {
-  font-family: "Accent Script";
+  font-family: "Alexandria";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../../node_modules/@fontsource/alex-brush/files/alex-brush-latin-400-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F;
+  src: url("../../node_modules/@fontsource/alexandria/files/alexandria-arabic-400-normal.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: "Alexandria";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/alexandria/files/alexandria-arabic-500-normal.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
 }
 
 *,
@@ -73,7 +127,7 @@ html {
 }
 
 html {
-  background: var(--color-off-white);
+  background: var(--color-brown-deep);
 }
 
 /* Behind the booking modal the page stays put until the modal has faded out. */
@@ -119,9 +173,69 @@ body {
 }
 
 h1,
-h2,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  /* Missing weights fall to the nearest drawn one instead of a smeared fake bold. */
+  font-synthesis-weight: none;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
 h3 {
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+[dir="ltr"] :is(h1, h2) {
+  letter-spacing: -0.01em;
+}
+
+/* An editorial accent word: serif italic in English, light Alexandria in Arabic. */
+.accent-word {
+  color: var(--color-muted-gold);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+[dir="rtl"] .accent-word {
+  font-style: normal;
+  font-weight: 300;
+}
+
+.on-dark .accent-word,
+[data-ground="dark"] .accent-word {
+  color: var(--color-gold);
+}
+
+/* Small uppercase label above a heading, with a hairline. */
+.eyebrow {
+  display: inline-flex;
+  gap: 0.875rem;
+  align-items: center;
+  color: var(--color-muted-gold);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+[dir="rtl"] .eyebrow {
+  font-size: 0.9375rem;
+  letter-spacing: 0;
+}
+
+.eyebrow::before {
+  inline-size: 2.5rem;
+  block-size: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.on-dark .eyebrow,
+[data-ground="dark"] .eyebrow {
+  color: var(--color-gold);
 }
 
 ul,
@@ -331,4 +445,106 @@ main:focus {
 .not-found h1 {
   font-size: clamp(1.875rem, 1.4rem + 2.2vw, 3.25rem);
   line-height: 1.25;
+}
+
+/* Motion system. Held states exist only while MotionDirector holds an element, and
+   only with motion allowed, so content is never hidden without it. */
+@media (prefers-reduced-motion: no-preference) {
+  /* Rise: a short lift into place. */
+  [data-motion="rise"][data-reveal="wait"],
+  [data-stagger][data-reveal="wait"] > * {
+    opacity: 0;
+    translate: 0 2.25rem;
+  }
+
+  [data-motion="rise"][data-reveal="in"],
+  [data-stagger][data-reveal="in"] > * {
+    transition:
+      opacity 0.9s ease,
+      translate var(--reveal-time) var(--ease-settle);
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  /* Mask: each line slides up from behind its own edge. */
+  [data-motion="mask"] > * {
+    display: block;
+    overflow: clip;
+    padding-block: 0.08em 0.16em;
+    margin-block: -0.08em -0.16em;
+  }
+
+  [data-motion="mask"] > * > * {
+    display: block;
+  }
+
+  [data-motion="mask"][data-reveal="wait"] > * > * {
+    translate: 0 112%;
+  }
+
+  [data-motion="mask"][data-reveal="in"] > * > * {
+    transition: translate var(--reveal-time) var(--ease-settle);
+    transition-delay: calc(var(--line, 0) * 110ms);
+  }
+
+  /* Curtain: media opens from its foot while the image inside settles. The clip is
+     on the child: a clipped target would read as off screen and never be released. */
+  [data-motion="curtain"] {
+    overflow: clip;
+  }
+
+  [data-motion="curtain"][data-reveal="wait"] > * {
+    clip-path: inset(100% 0 0 0);
+    scale: 1.18;
+  }
+
+  [data-motion="curtain"][data-reveal="in"] > * {
+    clip-path: inset(0);
+    scale: 1;
+    transition:
+      clip-path 1.3s var(--ease-travel),
+      scale 1.8s var(--ease-settle);
+  }
+
+  /* Rule: a hairline that draws across. */
+  [data-motion="rule"][data-reveal="wait"] {
+    scale: 0 1;
+  }
+
+  [data-motion="rule"] {
+    transform-origin: var(--start-edge, left) center;
+  }
+
+  [dir="rtl"] [data-motion="rule"] {
+    transform-origin: right center;
+  }
+
+  [data-motion="rule"][data-reveal="in"] {
+    scale: 1 1;
+    transition: scale 1.4s var(--ease-settle);
+  }
+}
+
+/* Parallax: media drifts against the scroll inside its frame. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-parallax] {
+      overflow: clip;
+    }
+
+    [data-parallax] > :is(img, video, div) {
+      scale: 1.14;
+      animation: parallax-drift linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+@keyframes parallax-drift {
+  from {
+    translate: 0 -6%;
+  }
+
+  to {
+    translate: 0 6%;
+  }
 }

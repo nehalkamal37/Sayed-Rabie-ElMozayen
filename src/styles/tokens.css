@@ -1,48 +1,74 @@
 :root {
-  /* Brand Guide palette */
-  --color-brown: #45291d;
-  --color-off-white: #f3ebe1;
-  --color-beige: #e7d0af;
-  --color-gold: #b98949;
-  --color-taupe: #a99279;
+  /* Luxury palette: warm near-black grounds, ivory paper, one champagne accent.
+     The names are kept from the Brand Guide set so every page follows. */
+  --color-ink: #171310; /* primary dark ground */
+  --color-ink-2: #24201c; /* secondary dark ground */
+  --color-ivory: #eae3d7;
+  --color-champagne: #b99a78;
+  --color-muted: #a99e90;
+  --color-paper: #f7f4ee;
 
-  /* Approved handoff tokens */
-  --color-brown-deep: #2b180f; /* footer, photo frames */
-  --color-brown-dark: #3a2218; /* bands and tiles on brown */
-  --color-brown-card: #4f3124; /* branch cards on brown */
-  --color-on-gold: #2a180f;
-  --color-text-soft: #5a3d2c; /* body text on light */
-  --color-brown-soft: #6b4a36; /* labels and captions on light */
-  --color-story-text: #4a3022;
-  --color-tan: #c9b494; /* small text on dark, chip borders on light */
-  --color-draft: #e0a96d; /* unconfirmed facts on dark */
+  --color-brown: #24201c; /* text on light, and the .on-dark ground */
+  --color-off-white: #f7f4ee;
+  --color-beige: #eae3d7;
+  --color-gold: #b99a78;
+  --color-taupe: #a99e90;
+
+  --color-brown-deep: #171310;
+  --color-brown-dark: #2b2621; /* bands on dark */
+  --color-brown-card: #322c26; /* cards on dark */
+  --color-on-gold: #171310;
+  --color-text-soft: #5b524a; /* body text on light, 7:1 */
+  --color-brown-soft: #6e6359; /* labels and captions on light, 5.4:1 */
+  --color-story-text: #3a332d;
+  --color-tan: #a99e90; /* small text on dark, 7:1 */
+  --color-draft: #d9a86c; /* unconfirmed facts on dark */
   --color-notice: #7a3d0c;
-  --color-notice-ground: #f6dcc0;
-  --color-line: #d9c7ad;
-  --color-line-card: #e3d3ba;
-  --color-line-input: #cdb795;
-  --color-line-band: #e0cfb4;
-  --color-line-row: #efe4d3;
-  --color-row-hover: #fbf7f0;
-  --color-line-dark: rgb(231 208 175 / 0.18);
+  --color-notice-ground: #f3e3cf;
+  --color-line: #ddd4c6;
+  --color-line-card: #e4ddd1;
+  --color-line-input: #cbbfae;
+  --color-line-band: #e2d9cc;
+  --color-line-row: #efe9df;
+  --color-row-hover: #fbf9f5;
+  --color-line-dark: rgb(234 227 215 / 0.16);
 
-  /* The handoff's #8a6a3c and #a07c4c fall under 4.5:1 where they carry text,
-     so these are the nearest shades that pass. */
-  --color-muted-gold: #85653a; /* 4.5:1 on off-white */
-  --color-empty-value: #8a6a3c; /* 5:1 on white */
+  /* Champagne deep enough to carry text on paper (4.8:1). */
+  --color-muted-gold: #7f6648;
+  --color-empty-value: #806a50;
   --color-error: #8f1d14;
 
-  /* Dubai is the brand typeface. It renders where installed; self-host it once
-     a licensed webfont is supplied. IBM Plex Sans Arabic is the approved fallback. */
+  /* Reading text: Dubai where installed, then IBM Plex Sans Arabic. */
   --font-brand: Dubai, "IBM Plex Sans Arabic", "Plex Fallback", Tahoma, sans-serif;
+  /* Display: an editorial serif for English, Alexandria for Arabic. */
+  --font-serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-arabic-display: "Alexandria", var(--font-brand);
+  --font-display: var(--font-arabic-display);
 
-  --gutter: 1rem;
-  --radius: 0.75rem;
-  --shadow-sticky: 0 14px 34px rgb(20 10 5 / 0.5);
+  /* Motion: one long, settling curve for reveals; a symmetric one for travel. */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-travel: cubic-bezier(0.65, 0, 0.35, 1);
+  --reveal-time: 1.1s;
+
+  --gutter: 1.25rem;
+  --radius: 2px;
+  --shadow-sticky: 0 14px 34px rgb(10 8 6 / 0.5);
+}
+
+:root {
+  /* 1 where text runs right to left, so movement can follow the reading direction. */
+  --dir: 1;
+  /* Distance from the screen edge to a 90rem-wide column's content. */
+  --edge: max(var(--gutter), calc((100vw - 90rem) / 2 + var(--gutter)));
+}
+
+:root[dir="ltr"] {
+  --dir: -1;
+  --font-display: var(--font-serif);
 }
 
 @media (min-width: 60rem) {
   :root {
-    --gutter: 2rem;
+    --gutter: 2.5rem;
   }
 }

@@ -1,0 +1,180 @@
+.gallery {
+  position: relative;
+}
+
+/* Native horizontal scrolling with snap points; the row bleeds to the screen edge. */
+.track {
+  display: grid;
+  grid-auto-columns: min(68vw, 300px);
+  grid-auto-flow: column;
+  gap: 16px;
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: var(--gutter);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  scroll-snap-align: start;
+}
+
+/* Odd cards sit lower, so the row reads as a composed strip, not a grid. */
+.card:nth-child(even) {
+  padding-block-start: 48px;
+}
+
+.reel {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: var(--color-brown-dark);
+}
+
+.reel video {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* Shade at the foot for the caption. */
+.reel::after {
+  position: absolute;
+  inset: 55% 0 0;
+  background: linear-gradient(0deg, rgb(10 8 6 / 0.85), rgb(10 8 6 / 0));
+  content: "";
+  pointer-events: none;
+}
+
+.toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-paper);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  inline-size: 64px;
+  block-size: 64px;
+  border: 1px solid rgb(247 244 238 / 0.7);
+  border-radius: 50%;
+  background: rgb(23 19 16 / 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.icon svg {
+  fill: currentColor;
+}
+
+/* While playing, the control steps back to the corner. */
+.reel[data-playing] .toggle {
+  place-items: start end;
+  padding: 14px;
+}
+
+.reel[data-playing] .icon {
+  inline-size: 44px;
+  block-size: 44px;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: -6px;
+}
+
+.caption {
+  position: absolute;
+  inset: auto 18px 18px;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  color: var(--color-paper);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  pointer-events: none;
+}
+
+.number {
+  color: var(--color-gold);
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-style: italic;
+}
+
+.arrows {
+  display: none;
+}
+
+@media (min-width: 60rem) {
+  .track {
+    grid-auto-columns: 300px;
+    gap: 24px;
+    padding-inline: var(--gutter);
+  }
+
+  .arrows {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding: 28px var(--gutter) 0;
+  }
+
+  .arrow {
+    display: grid;
+    place-items: center;
+    inline-size: 56px;
+    block-size: 56px;
+    border: 1px solid var(--color-line-input);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-brown);
+  }
+
+  .arrow:first-child svg {
+    rotate: 180deg;
+  }
+
+  :global([dir="rtl"]) .arrow svg {
+    scale: -1 1;
+  }
+
+  @media (hover: hover) {
+    .arrow:hover {
+      border-color: var(--color-brown);
+      background: var(--color-brown);
+      color: var(--color-paper);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reel video {
+    transition: scale 1.2s var(--ease-settle);
+  }
+
+  @media (hover: hover) {
+    .reel:hover video {
+      scale: 1.04;
+    }
+  }
+
+  .icon {
+    transition:
+      inline-size 0.4s var(--ease-settle),
+      block-size 0.4s var(--ease-settle);
+  }
+}

@@ -5,7 +5,7 @@ import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react"
 import type { Dictionary } from "@/content";
 import { photos, type Photo } from "@/data/photos";
 import { getService, services, type ServiceGroupId, type ServiceId } from "@/data/services";
-import type { Clip } from "@/data/stock-clips";
+import type { Clip } from "@/data/media";
 import type { Locale } from "@/i18n/config";
 import { BookingLink } from "../booking/booking-provider";
 import { useHomeSelection } from "./home-selection";

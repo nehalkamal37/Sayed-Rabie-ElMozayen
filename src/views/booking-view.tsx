@@ -12,7 +12,7 @@ export function BookingView({ locale }: { locale: Locale }) {
   const { booking, common } = getDictionary(locale);
   const { contact } = booking;
   return (
-    <PageFrame locale={locale}>
+    <PageFrame locale={locale} footerClose={false}>
       <div className={`container ${styles.root}`}>
         <div className={styles.intro}>
           <h1>{booking.heading}</h1>
