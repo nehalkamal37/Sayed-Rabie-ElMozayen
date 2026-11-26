@@ -42,15 +42,15 @@ export const en: Dictionary = {
         midtown: "Barber in New Cairo",
       },
       bookingLine: "Bookings:",
-      copyright: "© 2026 Sayed Rabie El Mozayen",
+      copyright: "© 2026 Saeid Rabie El Mozayen",
       sharedLine: "(shared line · branch number being confirmed)",
     },
   },
   home: {
-    metaTitle: "Men's Barber in Cairo & Giza | Sayed Rabie El Mozayen",
+    metaTitle: "Men's Barber in Cairo & Giza | Saeid Rabie El Mozayen",
     metaDescription:
-      "Men's barber in Cairo, Giza and the North Coast: haircuts, beard trims, skin care and groom packages by Sayed Rabie. Choose a branch and book online.",
-    headline: "Can't decide? Sayed Rabie is the answer.",
+      "Men's barber in Cairo, Giza and the North Coast: haircuts, beard trims, skin care and groom packages by Saeid Rabie. Choose a branch and book online.",
+    headline: "Can't decide? Saeid Rabie is the answer.",
     lede: "Choose your own look, we'll handle the rest. Haircuts, beard and men's grooming at the branch closest to you.",
     place: "Men's barber in Cairo & Giza.",
     ledeShort: "Choose your own look, we'll handle the rest. Haircuts, beard and grooming at the branch closest to you.",
@@ -102,7 +102,7 @@ export const en: Dictionary = {
     groom: {
       heading: "The groom package",
       accent: "groom",
-      body: "Your wedding day is no time for experiments. Sayed Rabie's team gets you ready from haircut to skin, so you can focus on your day.",
+      body: "Your wedding day is no time for experiments. Saeid Rabie's team gets you ready from haircut to skin, so you can focus on your day.",
       items: ["Haircut & styling", "Hot-towel beard trim", "Facial cleansing", "Manicure"],
       early: "Wedding season fills up fast, so request your date early.",
       cta: "Request your wedding date",
@@ -125,7 +125,7 @@ export const en: Dictionary = {
       body: "The same chair has seen grooms and kids getting their very first haircut, and everyone leaves with the look they chose.",
       points: ["We listen before we cut", "Same standard at every branch", "Tools sterilised after every client"],
       pause: "Pause the rotating phrases",
-      video: "Video of work at Sayed Rabie El Mozayen",
+      video: "Video of work at Saeid Rabie El Mozayen",
       playVideo: "Play the video",
       pauseVideo: "Pause the video",
       resume: "Resume the rotating phrases",
@@ -148,9 +148,9 @@ export const en: Dictionary = {
     },
   },
   services: {
-    metaTitle: "Men's Haircut Prices in Cairo 2026 | Sayed Rabie",
+    metaTitle: "Men's Haircut Prices in Cairo 2026 | Saeid Rabie",
     metaDescription:
-      "Men's haircut prices in Cairo at Sayed Rabie El Mozayen: haircuts, beard trims, fades, protein, facials and groom packages. Request your time online.",
+      "Men's haircut prices in Cairo at Saeid Rabie El Mozayen: haircuts, beard trims, fades, protein, facials and groom packages. Request your time online.",
     heading: "Men's Grooming Services & Prices",
     lede: "Every service with its time and price, so you know what you'll pay and how long you'll sit before you book.",
     draft: "Draft: details appear once confirmed",
@@ -226,7 +226,7 @@ export const en: Dictionary = {
     allBranches: "All branches",
   },
   directory: {
-    metaTitle: "Sayed Rabie Branches – Barber Shops in Cairo & Giza",
+    metaTitle: "Saeid Rabie Branches – Barber Shops in Cairo & Giza",
     metaDescription:
       "Find a barber near you at El Mozayen branches: Mohandessin, Sheikh Zayed, October Gardens, New Cairo, Madinaty, Rehab and North Coast. Pick the closest.",
     heading: "Our Branches",
@@ -243,11 +243,11 @@ export const en: Dictionary = {
     directions: "Directions",
   },
   groom: {
-    metaTitle: "Groom Package in Cairo – At the Shop | Sayed Rabie",
+    metaTitle: "Groom Package in Cairo – At the Shop | Saeid Rabie",
     metaDescription:
-      "Groom package in Cairo: your wedding-day grooming by Sayed Rabie's team. Haircut, beard, facial and manicure at the branch. Request a date and book early.",
-    heading: "The Groom Package by Sayed Rabie",
-    lede: "Your wedding day is no time for experiments. Sayed Rabie's team gets you ready from haircut to skin, at the branch, so you can focus on your day.",
+      "Groom package in Cairo: your wedding-day grooming by Saeid Rabie's team. Haircut, beard, facial and manicure at the branch. Request a date and book early.",
+    heading: "The Groom Package by Saeid Rabie",
+    lede: "Your wedding day is no time for experiments. Saeid Rabie's team gets you ready from haircut to skin, at the branch, so you can focus on your day.",
     included: "What's included",
     items: ["Haircut & styling", "Hot-towel beard trim", "Facial cleansing", "Manicure"],
     pending: "Other details and prices are being confirmed.",
@@ -263,20 +263,20 @@ export const en: Dictionary = {
     services: "All services & prices",
   },
   privacy: {
-    metaTitle: "Privacy Policy | Sayed Rabie El Mozayen",
+    metaTitle: "Privacy Policy | Saeid Rabie El Mozayen",
     metaDescription:
-      "Privacy policy for the Sayed Rabie El Mozayen website: how the name and mobile number in a booking request are used. Full text is pending approval.",
+      "Privacy policy for the Saeid Rabie El Mozayen website: how the name and mobile number in a booking request are used. Full text is pending approval.",
     heading: "Privacy policy",
     draft: "Draft · text pending approval",
-    pending: "The policy text is awaiting approval from Sayed Rabie El Mozayen and will appear here before the website launches.",
+    pending: "The policy text is awaiting approval from Saeid Rabie El Mozayen and will appear here before the website launches.",
     useHeading: "Your details in a booking request",
     preview:
       "This is a preview: the name and mobile you enter stay in your browser until you close the tab, and no request is sent.",
   },
   booking: {
-    metaTitle: "Book a Barber Online in Cairo | Sayed Rabie",
+    metaTitle: "Book a Barber Online in Cairo | Saeid Rabie",
     metaDescription:
-      "Book a barber online in Cairo at any Sayed Rabie branch, or call us. No sign-up needed: pick a branch, a service and a time, and the branch will confirm.",
+      "Book a barber online in Cairo at any Saeid Rabie branch, or call us. No sign-up needed: pick a branch, a service and a time, and the branch will confirm.",
     heading: "Book Your Appointment",
     lede: "Book whichever way suits you. No sign-up needed to book a barber online in Cairo, and the branch team will confirm what's available. This is a request, not a confirmation.",
     contact: {
@@ -336,7 +336,7 @@ export const en: Dictionary = {
     send: "Send booking request on WhatsApp",
     sendNote: "WhatsApp will open with the message ready. Your request is sent when you press send there.",
     message: {
-      title: "Booking request – Sayed Rabie El Mozayen",
+      title: "Booking request – Saeid Rabie El Mozayen",
       closing: "This is a request. Please confirm what's available at the branch.",
     },
     sheet: {
@@ -369,7 +369,7 @@ export const en: Dictionary = {
     },
   },
   notFound: {
-    metaTitle: "Page not found | Sayed Rabie El Mozayen",
+    metaTitle: "Page not found | Saeid Rabie El Mozayen",
     heading: "This page doesn't exist",
     body: "The link may be old or mistyped.",
     cta: "Back to home",

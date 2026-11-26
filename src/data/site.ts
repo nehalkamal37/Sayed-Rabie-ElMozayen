@@ -3,7 +3,7 @@ import { pending, verified, type Verifiable } from "./verification";
 
 export const brandName: Localized = {
   ar: "سيد ربيع المزين",
-  en: "Sayed Rabie El Mozayen",
+  en: "Saeid Rabie El Mozayen",
 };
 
 /** Set NEXT_PUBLIC_SITE_URL (no trailing slash) once a domain is approved. */

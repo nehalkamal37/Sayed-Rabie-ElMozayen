@@ -177,7 +177,7 @@ function branchDetail(
     ...copy,
     heading: {
       ar: `${copy.linkLabel.ar} – سيد ربيع المزين فرع ${branchName.ar}`,
-      en: `${copy.linkLabel.en} – Sayed Rabie ${branchName.en}`,
+      en: `${copy.linkLabel.en} – Saeid Rabie ${branchName.en}`,
     },
     ...media,
     questions: unansweredQuestions,
@@ -200,11 +200,11 @@ const records: Record<BranchId, Omit<Branch, "id">> = {
       },
       metaTitle: {
         ar: "حلاق في المهندسين | سيد ربيع المزين",
-        en: "Barber in Mohandessin | Sayed Rabie",
+        en: "Barber in Mohandessin | Saeid Rabie",
       },
       metaDescription: {
         ar: "حلاق رجالي في المهندسين، مناسب لو طالع من التمرين أو الشغل وعايز تتظبط بسرعة. اختار الخدمة واليوم واطلب معادك في سيد ربيع المزين والفرع يأكدلك المتاح.",
-        en: "Men's barber in Mohandessin, perfect for a quick sharpen-up after training or work. Request your time with Sayed Rabie and the branch will confirm it.",
+        en: "Men's barber in Mohandessin, perfect for a quick sharpen-up after training or work. Request your time with Saeid Rabie and the branch will confirm it.",
       },
     }),
   },
@@ -219,15 +219,15 @@ const records: Record<BranchId, Omit<Branch, "id">> = {
       branchName: { ar: "الشيخ زايد", en: "Sheikh Zayed" },
       intro: {
         ar: "فرع سيد ربيع المزين في الشيخ زايد. مكان الفرع بالتفصيل لسه بيتأكد.",
-        en: "The Sayed Rabie branch in Sheikh Zayed. The exact location is being confirmed.",
+        en: "The Saeid Rabie branch in Sheikh Zayed. The exact location is being confirmed.",
       },
       metaTitle: {
         ar: "حلاق في الشيخ زايد | سيد ربيع المزين",
-        en: "Barber in Sheikh Zayed | Sayed Rabie",
+        en: "Barber in Sheikh Zayed | Saeid Rabie",
       },
       metaDescription: {
         ar: "حلاق رجالي في الشيخ زايد من سيد ربيع المزين. من غير تسجيل ولا حساب: اختار الخدمة واليوم والوقت اللي يناسبك واطلب معادك، وفريق الفرع يأكدلك المتاح.",
-        en: "Men's barber in Sheikh Zayed by Sayed Rabie. No sign-up and no account: pick a service, a day and a time, and the branch team will confirm what's free.",
+        en: "Men's barber in Sheikh Zayed by Saeid Rabie. No sign-up and no account: pick a service, a day and a time, and the branch team will confirm what's free.",
       },
     }),
   },
@@ -242,15 +242,15 @@ const records: Record<BranchId, Omit<Branch, "id">> = {
       branchName: { ar: "حدائق أكتوبر", en: "October Gardens" },
       intro: {
         ar: "فرع سيد ربيع المزين في حدائق أكتوبر. مكان الفرع بالتفصيل لسه بيتأكد.",
-        en: "The Sayed Rabie branch in October Gardens. The exact location is being confirmed.",
+        en: "The Saeid Rabie branch in October Gardens. The exact location is being confirmed.",
       },
       metaTitle: {
         ar: "حلاق في حدائق أكتوبر | سيد ربيع المزين",
-        en: "Barber in October Gardens | Sayed Rabie",
+        en: "Barber in October Gardens | Saeid Rabie",
       },
       metaDescription: {
         ar: "حلاق رجالي في حدائق أكتوبر من سيد ربيع المزين. قولنا الخدمة واليوم والوقت اللي يناسبك واطلب معادك أونلاين من غير تسجيل، وفريق الفرع يأكدلك المتاح.",
-        en: "Men's barber in October Gardens by Sayed Rabie. Tell us the service, day and time that suit you, send your request online and the branch will confirm.",
+        en: "Men's barber in October Gardens by Saeid Rabie. Tell us the service, day and time that suit you, send your request online and the branch will confirm.",
       },
     }),
   },
@@ -270,7 +270,7 @@ const records: Record<BranchId, Omit<Branch, "id">> = {
         },
         metaTitle: {
           ar: "حلاق في مدينتي – East Hub | سيد ربيع المزين",
-          en: "Barber in Madinaty – East Hub | Sayed Rabie",
+          en: "Barber in Madinaty – East Hub | Saeid Rabie",
         },
         metaDescription: {
           ar: "حلاق رجالي في مدينتي في East Hub: قص شعر وفيد وتحديد ذقن وعناية بالبشرة. اطلب معادك في فرع مدينتي من سيد ربيع المزين، وفريق الفرع يأكدلك المتاح.",
@@ -322,11 +322,11 @@ const records: Record<BranchId, Omit<Branch, "id">> = {
       },
       metaTitle: {
         ar: "حلاق في التجمع الخامس – Midtown | سيد ربيع المزين",
-        en: "Barber in New Cairo – Midtown Mall | Sayed Rabie",
+        en: "Barber in New Cairo – Midtown Mall | Saeid Rabie",
       },
       metaDescription: {
         ar: "حلاق رجالي في التجمع الخامس في Midtown Mall من سيد ربيع المزين. اختار الخدمة واليوم والوقت اللي يناسبك واطلب معادك، وفريق الفرع يأكدلك المتاح.",
-        en: "Men's barber in New Cairo, at Midtown Mall, by Sayed Rabie. Pick a service, a day and a time online, and the branch team will confirm what's available.",
+        en: "Men's barber in New Cairo, at Midtown Mall, by Saeid Rabie. Pick a service, a day and a time online, and the branch team will confirm what's available.",
       },
     }),
   },
@@ -345,11 +345,11 @@ const records: Record<BranchId, Omit<Branch, "id">> = {
       },
       metaTitle: {
         ar: "حلاق في فندق ترايمف التجمع | سيد ربيع المزين",
-        en: "Barber at Triumph Hotel, New Cairo | Sayed Rabie",
+        en: "Barber at Triumph Hotel, New Cairo | Saeid Rabie",
       },
       metaDescription: {
         ar: "حلاق رجالي في فندق ترايمف في التجمع من سيد ربيع المزين، هادي ومناسب لضيوف الفندق. اختار الخدمة واليوم واطلب معادك، وفريق الفرع يأكدلك المتاح.",
-        en: "Men's barber at Triumph Hotel, New Cairo. Quiet, private and ideal for hotel guests. Request your time with Sayed Rabie and the branch will confirm it.",
+        en: "Men's barber at Triumph Hotel, New Cairo. Quiet, private and ideal for hotel guests. Request your time with Saeid Rabie and the branch will confirm it.",
       },
     }),
   },
@@ -364,15 +364,15 @@ const records: Record<BranchId, Omit<Branch, "id">> = {
       branchName: { ar: "الرحاب", en: "Rehab" },
       intro: {
         ar: "فرع سيد ربيع المزين في الرحاب. مكان الفرع بالتفصيل لسه بيتأكد.",
-        en: "The Sayed Rabie branch in Rehab City. The exact location is being confirmed.",
+        en: "The Saeid Rabie branch in Rehab City. The exact location is being confirmed.",
       },
       metaTitle: {
         ar: "حلاق في الرحاب | سيد ربيع المزين",
-        en: "Barber in Rehab City | Sayed Rabie",
+        en: "Barber in Rehab City | Saeid Rabie",
       },
       metaDescription: {
         ar: "حلاق رجالي في الرحاب من سيد ربيع المزين. اختار اللوك بتاعك، والباقي علينا: حدد الخدمة واليوم واطلب معادك أونلاين من غير تسجيل، والفرع يأكدلك المتاح.",
-        en: "Men's barber in Rehab City by Sayed Rabie. Choose your own look, we'll handle the rest: pick a service and a day online and the branch will confirm it.",
+        en: "Men's barber in Rehab City by Saeid Rabie. Choose your own look, we'll handle the rest: pick a service and a day online and the branch will confirm it.",
       },
     }),
   },
@@ -392,11 +392,11 @@ const records: Record<BranchId, Omit<Branch, "id">> = {
       },
       metaTitle: {
         ar: "حلاق في الساحل الشمالي – سي شل | سيد ربيع المزين",
-        en: "Barber on the North Coast – Seashell | Sayed Rabie",
+        en: "Barber on the North Coast – Seashell | Saeid Rabie",
       },
       metaDescription: {
         ar: "حلاق رجالي في الساحل الشمالي في سي شل. مصيفك في الساحل مش لازم يعطل قصتك: اختار الخدمة واليوم واطلب معادك من سيد ربيع المزين والفرع يأكدلك المتاح.",
-        en: "Men's barber on the North Coast at Seashell. Summer doesn't mean skipping your cut: request your time with Sayed Rabie and the branch will confirm it.",
+        en: "Men's barber on the North Coast at Seashell. Summer doesn't mean skipping your cut: request your time with Saeid Rabie and the branch will confirm it.",
       },
     }),
   },
