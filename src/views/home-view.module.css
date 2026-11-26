@@ -1232,3 +1232,15 @@
     translate: calc(var(--dir) * var(--travel) * -1) 0;
   }
 }
+
+/* Hero portrait: the face sits high and right of centre, so the crop keeps the top
+   of the frame on phones and on desktop. */
+.heroPhoto img.portrait {
+  object-position: 64% 4%;
+}
+
+@media (min-width: 60rem) {
+  .heroPhoto img.portrait {
+    object-position: 62% 2%;
+  }
+}

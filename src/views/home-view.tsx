@@ -51,6 +51,15 @@ const storyVideo = "/videos/story.mp4";
 const hasStoryVideo = existsSync(join(process.cwd(), "public", storyVideo));
 
 
+/** Hero portrait, added at the team's request. The same image appears on saeidrabie.com;
+ * confirm identity and usage rights before Production. */
+const heroPortrait = {
+  src: "/DQw0pW7X0LnC83fdepEJYPC30.avif",
+  width: 1400,
+  height: 1838,
+  alt: { ar: "بورتريه", en: "Portrait" },
+};
+
 const step = (waitsFor: Step, order = 0) => ({ "data-step": waitsFor, "data-order": order });
 
 interface Props {
@@ -141,10 +150,11 @@ export function HomeView({ locale, lettering = false, revision = false, typograp
             </h1>
             <div className={styles.heroPhoto}>
               <Image
-                src={photos.barberAtWork.src}
-                width={photos.barberAtWork.width}
-                height={photos.barberAtWork.height}
-                alt={photos.barberAtWork.alt[locale]}
+                className={signed ? styles.portrait : undefined}
+                src={signed ? heroPortrait.src : photos.barberAtWork.src}
+                width={signed ? heroPortrait.width : photos.barberAtWork.width}
+                height={signed ? heroPortrait.height : photos.barberAtWork.height}
+                alt={signed ? heroPortrait.alt[locale] : photos.barberAtWork.alt[locale]}
                 sizes="(min-width: 60rem) 50vw, 100vw"
                 preload
               />
