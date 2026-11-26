@@ -15,7 +15,14 @@ const TURN_MS = ENTER_MS + HOLD_MS + 250;
  * stay a plain list underneath, so screen readers meet them once, and without
  * JavaScript or with reduced motion the list simply shows in full.
  */
-export function PromiseRotation({ copy }: { copy: Dictionary["home"]["story"] }) {
+export function PromiseRotation({
+  copy,
+  progress = false,
+}: {
+  copy: Dictionary["home"]["story"];
+  /** Three ticks marking which promise is showing. */
+  progress?: boolean;
+}) {
   const root = useRef<HTMLDivElement>(null);
   const onScreen = useRef(false);
   const [paused, setPaused] = useState(false);
@@ -58,12 +65,19 @@ export function PromiseRotation({ copy }: { copy: Dictionary["home"]["story"] })
   }
 
   return (
-    <div ref={root} className={styles.slot}>
+    <div ref={root} className={styles.slot} data-progress={progress || undefined}>
       <ul className={styles.phrases}>
         {copy.points.map((point) => (
           <li key={point}>{point}</li>
         ))}
       </ul>
+      {progress ? (
+        <span className={styles.ticks} aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+      ) : null}
       <button
         type="button"
         className={styles.toggle}

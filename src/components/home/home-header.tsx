@@ -14,10 +14,12 @@ import styles from "./home-header.module.css";
 interface Props {
   readonly locale: Locale;
   readonly common: Dictionary["common"];
+  /** Only the scissors, where the name is already set in the logo's lettering. */
+  readonly mark?: boolean;
 }
 
 /** Logo in the middle, menu on one side and the language on the other. */
-export function HomeHeader({ locale, common }: Props) {
+export function HomeHeader({ locale, common, mark = false }: Props) {
   const [open, setOpen] = useState(false);
   const links = navLinks(locale, common.nav).filter(({ path }) => path !== "/");
 
@@ -39,15 +41,27 @@ export function HomeHeader({ locale, common }: Props) {
         >
           <Icon name={open ? "close" : "menu"} size={26} />
         </button>
-        <Image
-          className={styles.logo}
-          src="/brand/logo-brown.webp"
-          alt={brandName[locale]}
-          width={720}
-          height={251}
-          sizes="170px"
-          loading="eager"
-        />
+        {mark ? (
+          <Image
+            className={styles.mark}
+            src="/brand/scissors-brown.webp"
+            alt={brandName[locale]}
+            width={218}
+            height={201}
+            sizes="60px"
+            loading="eager"
+          />
+        ) : (
+          <Image
+            className={styles.logo}
+            src="/brand/logo-brown.webp"
+            alt={brandName[locale]}
+            width={720}
+            height={251}
+            sizes="170px"
+            loading="eager"
+          />
+        )}
         <div className={styles.language}>
           <LanguageSwitch
             locale={locale}

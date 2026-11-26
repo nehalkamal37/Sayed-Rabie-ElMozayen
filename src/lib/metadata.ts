@@ -20,7 +20,7 @@ export function pageMetadata(
       languages: {
         [localeMeta.ar.hreflang]: url("ar"),
         [localeMeta.en.hreflang]: url("en"),
-        "x-default": url("ar"),
+        "x-default": url("en"),
       },
     },
   };

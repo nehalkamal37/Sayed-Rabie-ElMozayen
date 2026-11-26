@@ -70,7 +70,8 @@
   background: #180c06;
 }
 
-.stage img {
+.stage img,
+.stage .clip {
   position: absolute;
   inset: 0;
   inline-size: 100%;
@@ -79,7 +80,8 @@
   opacity: 0;
 }
 
-.stage img[data-active="true"] {
+.stage img[data-active="true"],
+.stage .clip[data-active="true"] {
   z-index: 1;
   opacity: 1;
 }

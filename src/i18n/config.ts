@@ -11,6 +11,10 @@ export const localeMeta = {
 
 /** Maps a language-neutral path ("/", "/book", "/#branches") to its localized URL. */
 export function localePath(locale: Locale, path: string): string {
+  // The English home page is the site's front door at /; the Arabic one is at /ar.
+  // Every other page keeps Arabic at the root and English under /en.
+  const home = /^\/(?=[?#]|$)/.exec(path);
+  if (home) return locale === "ar" ? `/ar${path.slice(1)}` : path;
   return locale === "ar" ? path : `/en${path}`;
 }
 
@@ -20,6 +24,6 @@ export function otherLocale(locale: Locale): Locale {
 
 /** Strips the language prefix so the same page can be resolved in another language. */
 export function neutralPath(pathname: string): string {
-  const path = pathname.replace(/^\/en(?=\/|$)/, "");
+  const path = pathname.replace(/^\/(?:en|ar)(?=\/|$)/, "");
   return path === "" ? "/" : path;
 }

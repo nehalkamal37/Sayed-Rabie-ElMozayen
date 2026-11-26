@@ -60,6 +60,7 @@
   grid-row: 1;
   color: var(--color-brown);
   font-size: clamp(1.375rem, 6.2vw, 1.75rem);
+  font-weight: 400;
   line-height: 1.4;
 }
 
@@ -67,9 +68,28 @@
   grid-row: 2;
   margin-block: -0.16em -0.13em;
   color: var(--color-brown-deep);
-  font-size: clamp(4.25rem, 24vw, 8rem);
+  font-size: clamp(4.25rem, 25vw, 8rem);
+  font-weight: 500;
   line-height: 1;
   white-space: nowrap;
+}
+
+/* The name in the logo's lettering; its tails and dots lap over the photo. */
+.lettering {
+  --width: min(84vw, 27rem);
+
+  position: relative;
+  z-index: 2;
+  grid-row: 2;
+  inline-size: var(--width);
+  margin-block: 2px calc(var(--width) * -0.059);
+  margin-inline-start: 20px;
+}
+
+.lettering img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
 }
 
 .heroPhoto {
@@ -100,7 +120,8 @@
   grid-row: 4;
   margin-block-start: -0.86em;
   color: var(--color-off-white);
-  font-size: clamp(3.75rem, 20.6vw, 7rem);
+  font-size: clamp(3.75rem, 21.3vw, 7rem);
+  font-weight: 500;
   line-height: 1;
   white-space: nowrap;
 }
@@ -124,8 +145,8 @@
   min-block-size: 72px;
   background: var(--color-gold);
   color: var(--color-on-gold);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.375rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -133,9 +154,26 @@
   background: #a67a3d;
 }
 
-.call {
+/* Quiet ways on from the one gold action. */
+.heroLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+  align-items: center;
+  justify-content: space-between;
   margin-block-start: 4px;
-  text-align: center;
+}
+
+.heroBranches {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-block-size: 44px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration-color: var(--color-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 
 .call a,
@@ -161,15 +199,31 @@
 @media (max-width: 59.99rem) {
   :global(html[dir="ltr"]) .lineOne {
     margin-block: 0 -0.3em;
-    font-size: clamp(2.875rem, 15.3vw, 7rem);
+    font-size: clamp(2.875rem, 16.3vw, 7rem);
   }
 
   :global(html[dir="ltr"]) .lineTwo {
-    font-size: clamp(2.5rem, 13.7vw, 6.25rem);
+    font-size: clamp(2.5rem, 14.7vw, 6.25rem);
   }
 
   :global(html[dir="ltr"]) .heroPhoto {
     block-size: clamp(210px, calc(100svh - 362px), 640px);
+  }
+}
+
+/* Latin letters can sit a little closer at this size; Arabic ones must stay joined. */
+:global(html[dir="ltr"]) :is(.lineOne, .lineTwo, .story h2) {
+  letter-spacing: -0.02em;
+}
+
+/* Tall phones show where the page goes next: the first line of the story. */
+@media (max-width: 59.99rem) and (min-height: 47.5rem) {
+  .heroPhoto {
+    block-size: clamp(210px, calc(100svh - 448px), 620px);
+  }
+
+  :global(html[dir="ltr"]) .heroPhoto {
+    block-size: clamp(210px, calc(100svh - 422px), 640px);
   }
 }
 
@@ -184,19 +238,38 @@
 .story {
   display: grid;
   gap: 28px;
-  padding: 52px 20px;
+  padding: 36px 20px 52px;
 }
 
 .storyLead {
   color: var(--color-muted-gold);
   font-size: 1.0625rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .story h2 {
   margin-block: 8px 14px;
   color: var(--color-brown-deep);
-  font-size: 2.25rem;
+  font-size: clamp(1.75rem, 9.1vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* Each phrase keeps to its own line. */
+.story h2 span {
+  display: block;
+}
+
+:global(html[dir="ltr"]) .story h2 {
+  font-size: clamp(1.5rem, 7.8vw, 2.5rem);
+  line-height: 1.25;
+}
+
+/* The logo lettering, signing off the statement. */
+.signature {
+  inline-size: 116px;
+  block-size: auto;
+  margin-block-start: 20px;
 }
 
 .storyBody {
@@ -427,6 +500,7 @@
 }
 
 .closingPhoto {
+  position: relative;
   block-size: 430px;
   overflow: hidden;
 }
@@ -516,11 +590,11 @@
     /* Height the photo is drawn at: its 1.41 ratio over the width beside the headline. */
     --drawn: calc((100vw - var(--edge) - var(--reach)) * 1.41);
     /* How far from the edge the photo starts, the brown block ends and begins. */
-    --reach: calc(var(--one) * 2.85);
-    --panel: calc(var(--two) * 4.34);
+    --reach: calc(var(--one) * 2.72);
+    --panel: calc(var(--two) * 4.22);
     --split: calc(var(--one) * 0.97);
     --drop: calc(var(--one) * 0.23);
-    --measure: calc(var(--two) * 4.16);
+    --measure: calc(var(--two) * 4.04);
     --pad: calc(var(--two) * 0.42);
 
     align-content: start;
@@ -529,14 +603,25 @@
     background: var(--color-beige);
   }
 
+  .hero[data-lettering] {
+    --reach: calc(var(--one) * 2.5);
+    --drop: calc(var(--one) * 0.118);
+  }
+
+  .lettering {
+    --width: calc(var(--one) * 3.1);
+
+    margin: calc(var(--one) * 0.04) 0 0;
+  }
+
   :global(html[dir="ltr"]) .hero {
-    --one: min(7.6vw, var(--type) * 0.158);
-    --two: min(6.8vw, var(--type) * 0.141);
-    --reach: calc(var(--one) * 4.95);
-    --panel: calc(var(--two) * 6.78);
+    --one: min(7.9vw, var(--type) * 0.165);
+    --two: min(7.1vw, var(--type) * 0.148);
+    --reach: calc(var(--one) * 4.6);
+    --panel: calc(var(--two) * 6.3);
     --split: calc(var(--one) * 1.06);
     --drop: calc(var(--one) * 0.15);
-    --measure: calc(var(--two) * 6.45);
+    --measure: calc(var(--two) * 6.1);
     --pad: calc(var(--two) * 0.6);
   }
 
@@ -625,7 +710,7 @@
     padding-inline: var(--pad);
   }
 
-  .call {
+  .heroLinks {
     margin: 0;
   }
 
@@ -642,7 +727,16 @@
 
   .story h2 {
     margin-block: 12px 20px;
-    font-size: 3.5rem;
+    font-size: min(4.9vw, 3.5rem);
+  }
+
+  :global(html[dir="ltr"]) .story h2 {
+    font-size: min(4.4vw, 3.25rem);
+  }
+
+  .signature {
+    inline-size: 140px;
+    margin-block-start: 28px;
   }
 
   .storyBody {
@@ -836,6 +930,10 @@
 }
 
 @media (hover: hover) {
+  .heroBranches:hover {
+    text-underline-offset: 9px;
+  }
+
   .textLink:hover {
     text-underline-offset: 12px;
   }
@@ -861,9 +959,152 @@
   }
 }
 
+/* Revision: a quieter headline under one drawn accent, the gold flourish from the
+   logo. The words stay still; only the flourish draws and the photo settles. */
+.flourish {
+  display: none;
+}
+
+.hero[data-revision] .flourish {
+  position: relative;
+  z-index: 2;
+  display: block;
+  grid-row: 1;
+  inline-size: 132px;
+  block-size: auto;
+  margin: 2px 20px 6px;
+}
+
+/* Phones stack the headline in rows, one more for the flourish. */
+@media (max-width: 59.99rem) {
+  .hero[data-revision] .question {
+    grid-row: 2;
+  }
+
+  .hero[data-revision] .heroPhoto {
+    grid-row: 4;
+  }
+
+  .hero[data-revision] .heroAction {
+    grid-row: 6;
+  }
+
+  .hero[data-revision] .lineOne {
+    grid-row: 3;
+  }
+
+  .hero[data-revision] .lineTwo {
+    grid-row: 5;
+  }
+}
+
+.hero[data-revision] .lineOne {
+  font-size: clamp(3.5rem, 20vw, 6.5rem);
+}
+
+.hero[data-revision] .lineTwo {
+  font-size: clamp(3rem, 17.4vw, 5.75rem);
+}
+
+:global(html[dir="ltr"]) .hero[data-revision] .lineOne {
+  font-size: clamp(2.5rem, 13.4vw, 5.5rem);
+}
+
+:global(html[dir="ltr"]) .hero[data-revision] .lineTwo {
+  font-size: clamp(2.25rem, 11.9vw, 5rem);
+}
+
+@media (min-width: 60rem) {
+  .hero[data-revision] {
+    --one: min(10vw, var(--type) * 0.195);
+    --two: min(8.4vw, var(--type) * 0.16);
+    --top: calc(var(--type) * 0.045 + 34px);
+    /* The photo and brown block keep the current homepage's framing exactly. */
+    --reach: calc(min(12vw, var(--type) * 0.235) * 2.72);
+    --panel: calc(min(9.8vw, var(--type) * 0.192) * 4.22);
+  }
+
+  :global(html[dir="ltr"]) .hero[data-revision] {
+    --one: min(6.6vw, var(--type) * 0.138);
+    --two: min(6vw, var(--type) * 0.124);
+    --reach: calc(min(7.9vw, var(--type) * 0.165) * 4.6);
+    --panel: calc(min(7.1vw, var(--type) * 0.148) * 6.3);
+  }
+
+  .hero[data-revision] .headline {
+    position: relative;
+  }
+
+  .hero[data-revision] .flourish {
+    position: absolute;
+    inset-block-start: calc(var(--top) - 30px);
+    inset-inline-start: 0;
+    inline-size: 220px;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero[data-revision] :is(.lineOne, .lineTwo) {
+    animation: none;
+  }
+
+  .hero[data-revision] .flourish {
+    animation: draw 1s var(--ease) 0.15s both;
+  }
+}
+
+@keyframes draw {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+:global(html[dir="ltr"]) .hero[data-revision] .flourish {
+  animation-name: draw-ltr;
+}
+
+@keyframes draw-ltr {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+/* Signature option: the name is drawn; the rest of the headline stays clean.
+   Arabic uses the lettering from the logo, sized to the line it replaces. */
+.signatureArt {
+  display: inline-block;
+  inline-size: 3.05em;
+  block-size: auto;
+  vertical-align: -0.14em;
+}
+
+.page[data-type="signature"] .lineOne {
+  line-height: 1;
+}
+
+:global(html[dir="ltr"]) .page[data-type="signature"] .lineOne {
+  font-family: "Accent Script", var(--font-brand);
+  font-size: clamp(3.25rem, 17.5vw, 7.25rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+@media (min-width: 60rem) {
+  .signatureArt {
+    inline-size: 3.4em;
+  }
+
+  :global(html[dir="ltr"]) .page[data-type="signature"] .lineOne {
+    font-size: min(6.4vw, 5.75rem);
+  }
+}
+
 /* Transforms and clips only: nothing shifts the layout or delays the booking button. */
 @media (prefers-reduced-motion: no-preference) {
-  .lineOne {
+  .lineOne,
+  .lettering {
     animation: from-start 0.9s var(--ease) both;
   }
 
@@ -929,5 +1170,65 @@
 @keyframes settle {
   from {
     scale: 1.22;
+  }
+}
+
+/* Revision entrance, once on load: the photo comes from the reading side and the
+   text block from the other, crossing mid-way before both settle in their columns.
+   Both columns hold their final place from the start and move by transform only,
+   so nothing shifts and the booking button can be pressed throughout. */
+.hero[data-revision] {
+  --travel: 20vw;
+  --glide: cubic-bezier(0.5, 0, 0.15, 1);
+}
+
+@media (min-width: 60rem) {
+  .hero[data-revision] {
+    --travel: 40vw;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero[data-revision] .heroPhoto {
+    animation: enter-photo 0.8s var(--glide) both;
+  }
+
+  .hero[data-revision] .heroPhoto img {
+    animation: none;
+  }
+
+  .hero[data-revision] :is(.question, .lineOne, .lineTwo, .heroAction),
+  .hero[data-revision]::after {
+    animation: enter-text 0.8s var(--glide) both;
+  }
+
+  .hero[data-revision] .flourish {
+    animation:
+      enter-text 0.8s var(--glide) both,
+      draw 1s var(--ease) 0.15s both;
+  }
+
+  :global(html[dir="ltr"]) .hero[data-revision] .flourish {
+    animation-name: enter-text, draw-ltr;
+  }
+
+  /* Phones stack the booking row full width: it stays put, so the button is never
+     pushed past the screen edge. */
+  @media (max-width: 59.99rem) {
+    .hero[data-revision] .heroAction {
+      animation: none;
+    }
+  }
+}
+
+@keyframes enter-photo {
+  from {
+    translate: calc(var(--dir) * var(--travel)) 0;
+  }
+}
+
+@keyframes enter-text {
+  from {
+    translate: calc(var(--dir) * var(--travel) * -1) 0;
   }
 }

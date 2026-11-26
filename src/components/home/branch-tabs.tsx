@@ -5,16 +5,22 @@ import { useState, type CSSProperties } from "react";
 import type { Dictionary } from "@/content";
 import { branches, branchPath, defaultRegionId, regionIds, regionTabNames } from "@/data/branches";
 import { localePath, type Locale } from "@/i18n/config";
+import { fill } from "@/lib/text";
+import { BookingLink } from "../booking/booking-provider";
 import { Icon } from "../icons";
+import { useHomeSelection } from "./home-selection";
 import styles from "./branch-tabs.module.css";
 
 interface Props {
   readonly locale: Locale;
   readonly copy: Dictionary["home"]["branches"];
+  /** Adds a request button to each branch, carrying the branch and any chosen service. */
+  readonly book?: { readonly label: string; readonly labelFor: string };
 }
 
 /** Compact region tabs. Every region is laid out, so changing it never moves the page. */
-export function BranchTabs({ locale, copy }: Props) {
+export function BranchTabs({ locale, copy, book }: Props) {
+  const { service, chosen } = useHomeSelection();
   const [region, setRegion] = useState(defaultRegionId);
   const active = regionIds.indexOf(region);
   return (
@@ -49,6 +55,15 @@ export function BranchTabs({ locale, copy }: Props) {
                     <Icon name="chevronForward" className={styles.arrow} />
                     <span className="visually-hidden">{branch.detail.linkLabel[locale]}</span>
                   </Link>
+                  {book ? (
+                    <BookingLink
+                      className={styles.book}
+                      preset={chosen ? { branch: branch.id, service } : { branch: branch.id }}
+                      aria-label={fill(book.labelFor, { branch: branch.name[locale] })}
+                    >
+                      {book.label}
+                    </BookingLink>
+                  ) : null}
                 </li>
               ))}
           </ul>

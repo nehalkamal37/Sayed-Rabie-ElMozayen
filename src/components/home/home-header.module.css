@@ -29,6 +29,11 @@
   block-size: auto;
 }
 
+.mark {
+  inline-size: 44px;
+  block-size: auto;
+}
+
 .language {
   display: grid;
   place-items: center;

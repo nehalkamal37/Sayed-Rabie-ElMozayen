@@ -63,6 +63,7 @@ export const en: Dictionary = {
     },
     branches: {
       heading: "Find your nearest branch",
+      accent: "nearest",
       lede: "Pick a branch, see its address and hours, and request your time there.",
       draft: "Draft details · addresses being confirmed",
       draftShort: "Draft details",
@@ -72,6 +73,7 @@ export const en: Dictionary = {
     services: {
       eyebrow: "Services",
       heading: "Everything you need, one visit",
+      accent: "visit",
       all: "All services",
       allLong: "All services & prices",
       choose: "Choose a service",
@@ -99,6 +101,7 @@ export const en: Dictionary = {
     },
     groom: {
       heading: "The groom package",
+      accent: "groom",
       body: "Your wedding day is no time for experiments. Sayed Rabie's team gets you ready from haircut to skin, so you can focus on your day.",
       items: ["Haircut & styling", "Hot-towel beard trim", "Facial cleansing", "Manicure"],
       early: "Wedding season fills up fast, so request your date early.",
@@ -116,11 +119,15 @@ export const en: Dictionary = {
     },
     story: {
       eyebrow: "Our story",
-      heading: "Get up from the chair happy with what you see",
+      heading: ["Get up from the chair", "happy with what you see"],
+      accent: "happy",
       lead: "El Mozayen was built around that one simple idea.",
       body: "The same chair has seen grooms and kids getting their very first haircut, and everyone leaves with the look they chose.",
       points: ["We listen before we cut", "Same standard at every branch", "Tools sterilised after every client"],
       pause: "Pause the rotating phrases",
+      video: "Video of work at Sayed Rabie El Mozayen",
+      playVideo: "Play the video",
+      pauseVideo: "Pause the video",
       resume: "Resume the rotating phrases",
     },
     reviews: { heading: "What our clients say" },

@@ -66,6 +66,32 @@
   text-decoration: none;
 }
 
+.list li {
+  position: relative;
+}
+
+/* Sits in the tile's free corner, beside the arrow. */
+.book {
+  position: absolute;
+  inset-block-end: 8px;
+  inset-inline-start: 8px;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding-inline: 8px;
+  color: var(--color-brown-deep);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.book:active {
+  background: var(--color-beige);
+}
+
 .name {
   color: var(--color-brown-deep);
   font-size: 1.25rem;
@@ -135,6 +161,11 @@
     inset-block-end: 24px;
     inset-inline-end: 24px;
   }
+
+  .book {
+    inset-block-end: 14px;
+    inset-inline-start: 16px;
+  }
 }
 
 @media (hover: hover) {
@@ -150,6 +181,10 @@
 
   .entry:hover .name {
     color: #fff;
+  }
+
+  .book:hover {
+    text-underline-offset: 8px;
   }
 
   .entry:hover .note,

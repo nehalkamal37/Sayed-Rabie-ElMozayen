@@ -5,15 +5,20 @@ import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react"
 import type { Dictionary } from "@/content";
 import { photos, type Photo } from "@/data/photos";
 import { getService, services, type ServiceGroupId, type ServiceId } from "@/data/services";
+import type { Clip } from "@/data/stock-clips";
 import type { Locale } from "@/i18n/config";
 import { BookingLink } from "../booking/booking-provider";
 import { useHomeSelection } from "./home-selection";
+import { StoryVideo } from "./story-video";
 import styles from "./service-menu.module.css";
 
 interface Props {
   readonly locale: Locale;
   readonly copy: Dictionary["home"]["services"];
   readonly bookLabel: string;
+  /** One clip per service, in the copy's order, shown instead of the photos. */
+  readonly clips?: readonly Clip[];
+  readonly videoLabels?: { readonly play: string; readonly pause: string };
 }
 
 interface View {
@@ -31,7 +36,7 @@ const views: readonly View[] = [
 ];
 
 /** A visual menu: one choice changes the photo, the description and the booking action. */
-export function ServiceMenu({ locale, copy, bookLabel }: Props) {
+export function ServiceMenu({ locale, copy, bookLabel, clips, videoLabels }: Props) {
   const [active, setActive] = useState(0);
   const { choose } = useHomeSelection();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -84,14 +89,25 @@ export function ServiceMenu({ locale, copy, bookLabel }: Props) {
             onKeyDown={(event) => move(event, index)}
           >
             <span className={styles.thumb}>
-              <Image
-                src={views[index].photo.src}
-                width={views[index].photo.width}
-                height={views[index].photo.height}
-                alt=""
-                sizes="130px"
-                style={{ objectPosition: views[index].position }}
-              />
+              {clips ? (
+                <Image
+                  src={clips[index].poster}
+                  width={clips[index].posterWidth}
+                  height={clips[index].posterHeight}
+                  alt=""
+                  sizes="130px"
+                  style={{ objectPosition: clips[index].position }}
+                />
+              ) : (
+                <Image
+                  src={views[index].photo.src}
+                  width={views[index].photo.width}
+                  height={views[index].photo.height}
+                  alt=""
+                  sizes="130px"
+                  style={{ objectPosition: views[index].position }}
+                />
+              )}
             </span>
             <span className={styles.tabTitle}>{item.title}</span>
           </button>
@@ -99,7 +115,26 @@ export function ServiceMenu({ locale, copy, bookLabel }: Props) {
       </div>
 
       <div className={styles.stage}>
-        {views.map(({ photo, position }, index) => (
+        {clips && videoLabels
+          ? clips.map((clip, index) => (
+              <div
+                key={clip.src}
+                className={styles.clip}
+                data-active={index === active}
+                inert={index !== active}
+              >
+                <StoryVideo
+                  src={clip.src}
+                  poster={clip.poster}
+                  label={clip.label[locale]}
+                  playLabel={videoLabels.play}
+                  pauseLabel={videoLabels.pause}
+                  position={clip.position}
+                  active={index === active}
+                />
+              </div>
+            ))
+          : views.map(({ photo, position }, index) => (
           <Image
             key={photo.src}
             src={photo.src}
@@ -111,7 +146,7 @@ export function ServiceMenu({ locale, copy, bookLabel }: Props) {
             data-active={index === active}
             style={{ objectPosition: position }}
           />
-        ))}
+          ))}
       </div>
 
       <div className={styles.card}>

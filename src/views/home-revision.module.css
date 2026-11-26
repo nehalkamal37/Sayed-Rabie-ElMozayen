@@ -1,0 +1,379 @@
+/* Story: a composed frame that reads complete even with the rotation paused. */
+
+.story {
+  display: grid;
+  gap: 32px;
+  padding: 44px 20px 60px;
+}
+
+.label {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: var(--color-muted-gold);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.label::after {
+  inline-size: 56px;
+  block-size: 1px;
+  background: var(--color-gold);
+  content: "";
+}
+
+.story h2 {
+  margin-block: 14px 16px;
+  color: var(--color-brown-deep);
+  font-size: clamp(1.75rem, 8.6vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.story h2 span {
+  display: block;
+}
+
+:global(html[dir="ltr"]) .story h2 {
+  font-size: clamp(1.5rem, 7.4vw, 2.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.storyLead {
+  color: var(--color-brown-deep);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.storyBody {
+  margin-block-start: 8px;
+  color: var(--color-text-soft);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.storyFrame {
+  display: grid;
+}
+
+/* Set in from the reading edge; the promise laps over its foot from that edge. */
+.storyPhoto {
+  margin-inline-start: 40px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-beige);
+}
+
+.storyPhoto img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: 30% 50%;
+}
+
+.promise {
+  position: relative;
+  margin-block-start: -88px;
+  margin-inline-end: 40px;
+  box-shadow: 0 18px 40px rgb(43 24 15 / 0.14);
+}
+
+/* Groom: the strongest feature after the hero */
+
+.groom {
+  display: grid;
+  gap: 64px;
+  padding-block: 64px 72px;
+  background: #160c07;
+  color: var(--color-beige);
+}
+
+.groomPhotos {
+  position: relative;
+  padding-inline: 20px;
+}
+
+.groomMain {
+  margin-inline-end: 72px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.groomMain img,
+.groomInset img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.groomMain img {
+  object-position: 38% 70%;
+}
+
+/* Stock clip in place of the closing photo: fills the photo's area. */
+.closingClip {
+  position: absolute;
+  inset: 0;
+}
+
+/* A second, closer look at the finish, framed in gold. */
+.groomInset {
+  position: absolute;
+  inset-block-end: -40px;
+  inset-inline-end: 20px;
+  inline-size: 44%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 6px solid #160c07;
+  outline: 1px solid var(--color-gold);
+}
+
+.groomInset img {
+  object-position: 50% 30%;
+}
+
+.groomText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-inline: 20px;
+}
+
+.groomTitle {
+  color: #fff;
+  font-size: clamp(2.75rem, 13vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+/* Signature option: one word in a heading drawn in the script, like "Groom".
+   Gold where the section is dark; the deeper gold on light sections for contrast. */
+.accent {
+  color: var(--color-muted-gold);
+  font-family: "Accent Script", var(--font-brand);
+  font-size: 1.3em;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0;
+}
+
+:global(html[dir="ltr"]) .accent {
+  font-size: 1.45em;
+}
+
+/* Stays in its line, even where a heading sets its lines as blocks. */
+h2 span.accent {
+  display: inline;
+}
+
+/* Signature option: the one drawn word, on a line of its own. */
+.groomAccent {
+  display: block;
+  margin-block: 0.06em 0.02em;
+  color: var(--color-gold);
+  font-family: "Accent Script", var(--font-brand);
+  font-size: 1.45em;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+:global(html[dir="ltr"]) .groomAccent {
+  display: inline;
+  font-size: 1.6em;
+  line-height: 0.95;
+  text-transform: capitalize;
+}
+
+.groomBody {
+  color: var(--color-off-white);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.inclusions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 20px;
+  counter-reset: inclusion;
+}
+
+.inclusions li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-block: 14px;
+  border-block-start: 1px solid rgb(185 137 73 / 0.6);
+  color: #fff;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  counter-increment: inclusion;
+}
+
+.inclusions li::before {
+  color: var(--color-gold);
+  font-size: 1.375rem;
+  font-weight: 500;
+  content: counter(inclusion, decimal-leading-zero);
+}
+
+.early {
+  color: var(--color-beige);
+  line-height: 1.7;
+}
+
+.groomActions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.groomBook {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 64px;
+  padding-inline: 32px;
+  background: var(--color-gold);
+  color: var(--color-on-gold);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.groomBook:active {
+  background: #a67a3d;
+}
+
+.groomLink {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-block-size: 48px;
+  color: var(--color-beige);
+  font-weight: 600;
+  text-decoration-color: var(--color-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+.groom :focus-visible {
+  outline-color: var(--color-off-white);
+}
+
+@media (min-width: 60rem) {
+  .story {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 96px;
+    align-items: center;
+    padding: 120px var(--edge);
+  }
+
+  .story h2 {
+    font-size: min(4.6vw, 3.5rem);
+  }
+
+  :global(html[dir="ltr"]) .story h2 {
+    font-size: min(4vw, 3.25rem);
+  }
+
+  .storyBody,
+  .storyLead {
+    font-size: 1.1875rem;
+  }
+
+
+
+  .storyPhoto {
+    margin-inline-start: 0;
+    margin-inline-end: 96px;
+  }
+
+  .promise {
+    margin-block-start: -120px;
+    margin-inline: 96px 0;
+  }
+
+  .groom {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 96px;
+    align-items: center;
+    padding: 120px var(--edge);
+  }
+
+  .groomPhotos {
+    padding: 0;
+  }
+
+  .groomMain {
+    margin-inline-end: 96px;
+  }
+
+  .groomInset {
+    inset-inline-end: 0;
+    inset-block-end: -56px;
+    inline-size: 40%;
+  }
+
+  .groomText {
+    padding: 0;
+  }
+
+  .groomTitle {
+    font-size: min(5.6vw, 5rem);
+  }
+
+  .groomBody {
+    font-size: 1.25rem;
+  }
+
+  .groomActions {
+    flex-direction: row;
+    gap: 28px;
+    align-items: center;
+  }
+}
+
+@media (hover: hover) {
+  .groomBook:hover {
+    background: var(--color-off-white);
+  }
+
+  .groomLink:hover {
+    text-underline-offset: 11px;
+  }
+}
+
+/* Photo, then its inset, then the title, then the text and button as each is reached. */
+@media (prefers-reduced-motion: no-preference) {
+  .groomMain[data-reveal="wait"] img {
+    clip-path: inset(0 100% 0 0);
+    scale: 1.15;
+  }
+
+  :global(html[dir="ltr"]) .groomMain[data-reveal="wait"] img {
+    clip-path: inset(0 0 0 100%);
+  }
+
+  .groomMain[data-reveal="in"] img {
+    clip-path: inset(0);
+    transition:
+      clip-path 1s var(--ease),
+      scale 1.4s var(--ease);
+  }
+
+  .groomInset[data-reveal="wait"],
+  .groomText > [data-reveal="wait"] {
+    opacity: 0;
+    translate: 0 28px;
+  }
+
+  .groomInset[data-reveal="in"],
+  .groomText > [data-reveal="in"] {
+    transition:
+      opacity 0.6s ease,
+      translate 0.8s var(--ease);
+  }
+}

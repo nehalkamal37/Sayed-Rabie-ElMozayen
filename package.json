@@ -12,6 +12,8 @@
   "dependencies": {
     "@fontsource-variable/source-sans-3": "^5.3.1",
     "@fontsource-variable/vazirmatn": "^5.3.0",
+    "@fontsource/alex-brush": "5.3.0",
+    "@fontsource/aref-ruqaa-ink": "5.3.0",
     "@fontsource/ibm-plex-sans-arabic": "5.0.8",
     "next": "16.4.6",
     "react": "19.3.0",

@@ -1,0 +1,76 @@
+.frame {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  background: var(--color-brown-deep);
+}
+
+.frame video {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* A small pause button in the corner, or a large Play when it is waiting. */
+.toggle {
+  position: absolute;
+  inset-block-start: 12px;
+  inset-inline-end: 12px;
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(243 235 225 / 0.9);
+  color: var(--color-brown-deep);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.toggle svg {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+.toggle[data-large] {
+  inset: 22% auto auto 50%;
+  inline-size: 72px;
+  block-size: 72px;
+  background: var(--color-gold);
+  color: var(--color-on-gold);
+  translate: -50% 0;
+}
+
+.toggle[data-large] svg {
+  inline-size: 28px;
+  block-size: 28px;
+}
+
+/* With reduced motion the clip waits for Play, so the large button shows from the start. */
+@media (prefers-reduced-motion: reduce) {
+  .toggle[data-idle] {
+    inset: 22% auto auto 50%;
+    inline-size: 72px;
+    block-size: 72px;
+    background: var(--color-gold);
+    color: var(--color-on-gold);
+    translate: -50% 0;
+  }
+
+  .toggle[data-idle] svg {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+}
+
+.toggle svg {
+  fill: currentColor;
+}
+
+.toggle:focus-visible {
+  outline: 3px solid var(--color-off-white);
+  outline-offset: 2px;
+}
